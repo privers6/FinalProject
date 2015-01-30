@@ -16,6 +16,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.example.twig.finalproject.LoginActivity"
+            android:label="Login Activity"
+            android:parentActivityName="com.example.twig.finalproject.MainActivity">
+        </activity>
+
+        <activity
+            android:name="com.example.twig.finalproject.ApplicationActivity"
+            android:label="Application Activity">
+        </activity>
+
     </application>
 
 </manifest>
