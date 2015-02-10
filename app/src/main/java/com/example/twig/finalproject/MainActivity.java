@@ -7,9 +7,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.content.Intent;
 
-
+/**
+ * The main activity, which launches whenever the app is started.
+ *
+ * @author Andrew
+ */
 public class MainActivity extends ActionBarActivity {
 
+    /**
+     * Called upon activity creation.
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,11 +48,21 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Method called when the login button is pressed.
+     *
+     * @param view - the login button
+     */
     public void loginPressed(View view) {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Method called when the register button is pressed.
+     *
+     * @param view - the register button
+     */
     public void registerPressed(View view) {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);

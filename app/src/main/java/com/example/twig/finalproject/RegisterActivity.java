@@ -11,26 +11,48 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * Created by Andrew on 2/5/2015.
+ * The activity in which the user registers for an account.
+ *
+ * @author Andrew
  */
 public class RegisterActivity extends Activity {
     static ArrayList<User> userList = new ArrayList<User>();
 
+    /**
+     * Called upon activity creation.
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
     }
 
+    /**
+     * Returns the static list of all of the registered users.
+     *
+     * @return the list of users.
+     */
     public static ArrayList getUserList() {
         return userList;
     }
 
+    /**
+     * Method called when the cancel button is pressed.
+     *
+     * @param view - the cancel button
+     */
     public void cancelPressed(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Method called when the register button is pressed.
+     *
+     * @param view - the register button
+     */
     public void registerPressed(View view) {
         String user = ((EditText)findViewById(R.id.username_field)).getText().toString();
         String pass = ((EditText)findViewById(R.id.password_field)).getText().toString();
