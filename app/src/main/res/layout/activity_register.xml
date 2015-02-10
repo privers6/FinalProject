@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:id="@+id/Main"
+    android:background="@drawable/abc_popup_background_mtrl_mult"
+    android:backgroundTint="@color/background_floating_material_dark">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="REGISTER"
+        android:id="@+id/RegisterText"
+        android:layout_marginTop="67dp"
+        android:textSize="60dp"
+        android:textColor="#ff9fff80"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/username_field"
+        android:width="250dp"
+        android:hint="Username"
+        android:layout_marginTop="128dp"
+        android:layout_below="@+id/RegisterText"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/password_field"
+        android:layout_marginTop="10dp"
+        android:width="250dp"
+        android:hint="Password"
+        android:clickable="true"
+        android:layout_below="@+id/username_field"
+        android:layout_alignLeft="@+id/username_field"
+        android:layout_alignStart="@+id/username_field" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="REGISTER"
+        android:id="@+id/registerButton"
+        android:width="120dp"
+        android:clickable="true"
+        android:onClick="registerPressed"
+        android:layout_alignTop="@+id/button4"
+        android:layout_alignRight="@+id/password_field"
+        android:layout_alignEnd="@+id/password_field" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CANCEL"
+        android:id="@+id/button4"
+        android:width="120dp"
+        android:onClick="cancelPressed"
+        android:layout_below="@+id/confirm_password_field"
+        android:layout_alignLeft="@+id/confirm_password_field"
+        android:layout_alignStart="@+id/confirm_password_field"
+        android:layout_marginTop="42dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:width="250dp"
+        android:id="@+id/confirm_password_field"
+        android:layout_below="@+id/password_field"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:hint="Confirm Password" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Filler Text"
+        android:id="@+id/errorMessage"
+        android:textColor="#FF0000"
+        android:layout_below="@+id/confirm_password_field"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible" />
+
+</RelativeLayout>

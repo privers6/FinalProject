@@ -28,6 +28,11 @@
             android:label="Application Activity">
         </activity>
 
+        <activity
+            android:name="com.example.twig.finalproject.RegisterActivity"
+            android:label="Register Activity">
+        </activity>
+
     </application>
 
 </manifest>
