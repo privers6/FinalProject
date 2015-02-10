@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 /**
  * Created by Andrew on 1/29/2015.
  */
@@ -27,12 +29,18 @@ public class LoginActivity extends Activity {
         String user = ((EditText)findViewById(R.id.username_field)).getText().toString();
         String pass = ((EditText)findViewById(R.id.password_field)).getText().toString();
 
-        if (user.equalsIgnoreCase("user") && pass.equals("pass")) {
-            Intent intent = new Intent(this, ApplicationActivity.class);
-            startActivity(intent);
+        ArrayList<User> userList = RegisterActivity.getUserList();
+
+        for(User u: userList) {
+            if(user.equalsIgnoreCase(u.getName())) {
+                if(pass.equals(u.getPassword())) {
+                    Intent intent = new Intent(this, ApplicationActivity.class);
+                    startActivity(intent);
+                    return;
+                }
+            }
         }
-        else {
-            findViewById(R.id.invalid_message).setVisibility(View.VISIBLE);
-        }
+
+        findViewById(R.id.invalid_message).setVisibility(View.VISIBLE);
     }
 }
