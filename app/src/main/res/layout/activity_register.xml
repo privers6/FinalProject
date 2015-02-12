@@ -28,9 +28,24 @@
         android:id="@+id/username_field"
         android:width="250dp"
         android:hint="Username"
-        android:layout_marginTop="128dp"
         android:layout_below="@+id/RegisterText"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="80dp"
+        android:layout_alignLeft="@+id/confirm_password_field"
+        android:layout_alignStart="@+id/confirm_password_field" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/email_field"
+        android:layout_marginTop="10dp"
+        android:width="250dp"
+        android:hint="Email Address"
+        android:clickable="true"
+        android:layout_below="@+id/username_field"
+        android:layout_alignLeft="@+id/username_field"
+        android:layout_alignStart="@+id/username_field" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -42,7 +57,7 @@
         android:width="250dp"
         android:hint="Password"
         android:clickable="true"
-        android:layout_below="@+id/username_field"
+        android:layout_below="@+id/email_field"
         android:layout_alignLeft="@+id/username_field"
         android:layout_alignStart="@+id/username_field" />
 
