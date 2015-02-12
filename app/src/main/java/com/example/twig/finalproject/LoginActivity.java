@@ -51,6 +51,7 @@ public class LoginActivity extends Activity {
             if(user.equalsIgnoreCase(u.getName())) {
                 if(pass.equals(u.getPassword())) {
                     Intent intent = new Intent(this, ApplicationActivity.class);
+                    intent.putExtra("LOGIN_MESSAGE", u.getName());
                     startActivity(intent);
                     return;
                 }
