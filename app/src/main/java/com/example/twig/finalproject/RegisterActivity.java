@@ -55,11 +55,15 @@ public class RegisterActivity extends Activity {
      */
     public void registerPressed(View view) {
         String user = ((EditText)findViewById(R.id.username_field)).getText().toString();
+        String email = ((EditText)findViewById(R.id.email_field)).getText().toString();
         String pass = ((EditText)findViewById(R.id.password_field)).getText().toString();
         String confirmPass = ((EditText)findViewById(R.id.confirm_password_field)).getText().toString();
         TextView errorMessage = ((TextView)findViewById(R.id.errorMessage));
 
-        if(user.isEmpty() || pass.isEmpty() || confirmPass.isEmpty()) {
+        //doesn't check if email is a valid email. this feature could be added later using regex
+        //but for the purpose of this class it probably isn't that important to verify
+
+        if(user.isEmpty() || email.isEmpty() || pass.isEmpty() || confirmPass.isEmpty()) {
             errorMessage.setText("One or more fields are empty");
             errorMessage.setVisibility(View.VISIBLE);
             return;
@@ -79,7 +83,7 @@ public class RegisterActivity extends Activity {
             }
         }
 
-        userList.add(new User(user, pass));
+        userList.add(new User(user, email, pass));
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
