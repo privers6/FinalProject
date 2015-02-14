@@ -70,4 +70,31 @@ public class User {
      * @return the number of sales reported.
      */
     public int getSalesReported() { return salesReported; }
+
+    /**
+     * Override of equals method. Two user's are equal if
+     * they have the same username.
+     *
+     * @param obj - the object we are comparing to
+     * @return true if the object is a User with the same username
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof User))
+            return false;
+
+        return name.equals(((User)obj).getName());
+    }
+
+    /**
+     * Whenever equals is overridden, so should the hash method,
+     * to ensure hashtables work properly.
+     *
+     * The hashcode should only depend on attributes that are checked
+     * when checking for equality.
+     */
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
 }
