@@ -48,13 +48,22 @@ public class ApplicationActivity extends Activity {
         loginText.setGravity(Gravity.CENTER_HORIZONTAL);
     }
 
+    /**
+     * Method called when the login button is pressed.
+     *
+     * @param view - the login button
+     */
     public void logoutPressed(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         currentUser = null;
         startActivity(intent);
     }
 
-    //return current user
+    /**
+     * Returns the currently logged in user.
+     *
+     * @return the currently logged in user.
+     */
     public static User getCurrentUser() {
         return currentUser;
     }
