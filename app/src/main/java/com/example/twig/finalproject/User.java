@@ -1,5 +1,7 @@
 package com.example.twig.finalproject;
 
+import java.util.ArrayList;
+
 /**
  * Class containing the information for a user.
  *
@@ -8,6 +10,7 @@ package com.example.twig.finalproject;
 public class User {
     private String name;
     private String password;
+    private ArrayList<Friend> friendList;
     private String email;
     private int salesReported;
 
@@ -21,6 +24,7 @@ public class User {
         name = n;
         email = e;
         password = p;
+        friendList = new ArrayList<Friend>();
         salesReported = 0;
     }
 
@@ -70,6 +74,34 @@ public class User {
      * @return the number of sales reported.
      */
     public int getSalesReported() { return salesReported; }
+
+    /**
+     * Getter for the friends list.
+     *
+     * @return the friends list.
+     */
+    public ArrayList<Friend>getFriendList() {
+        return friendList;
+    }
+
+    /**
+     * Adds a user to this user's friend list. If user
+     * is already in friend list, do not do the addition.
+     *
+     * @param u - User to get wrapped in a Friend object
+     *          and added to the friends list.
+     */
+    public void addFriend(User u) {
+        Friend newFriend = new Friend(u);
+        boolean found = false;
+        for (Friend i: friendList) {
+            if (i.getUser().getName().equalsIgnoreCase(u.getName())) {
+                return; //duplicate friend
+            }
+        }
+
+        friendList.add(newFriend);
+    }
 
     /**
      * Override of equals method. Two user's are equal if
