@@ -60,6 +60,25 @@ public class ApplicationActivity extends Activity {
     }
 
     /**
+     * Method called when the friend button is pressed.
+     *
+     * @param view - the friend button
+     */
+    public void friendButtonPressed(View view) {
+        //Intent intent = new Intent(this, FriendListActivity.class);
+        //startActivity(intent);
+    }
+
+    /**
+     * Method called when the notification button is pressed.
+     *
+     * @param view - the notification button
+     */
+    public void notificationButtonPressed(View view) {
+        //TODO: add notificationActivity
+    }
+
+    /**
      * Returns the currently logged in user.
      *
      * @return the currently logged in user.
