@@ -59,6 +59,11 @@ public class ApplicationActivity extends Activity {
         startActivity(intent);
     }
 
+    public void friendsPressed(View view) {
+        Intent intent = new Intent(this, FriendListActivity.class);
+        startActivity(intent);
+    }
+
     /**
      * Method called when the friend button is pressed.
      *

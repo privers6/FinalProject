@@ -91,16 +91,17 @@ public class User {
      * @param u - User to get wrapped in a Friend object
      *          and added to the friends list.
      */
-    public void addFriend(User u) {
+    public boolean addFriend(User u) {
         Friend newFriend = new Friend(u);
         boolean found = false;
         for (Friend i: friendList) {
             if (i.getUser().getName().equalsIgnoreCase(u.getName())) {
-                return; //duplicate friend
+                return false;
             }
         }
 
         friendList.add(newFriend);
+        return true;
     }
 
     /**
