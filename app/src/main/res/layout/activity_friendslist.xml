@@ -7,12 +7,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Back"
-        android:id="@+id/button5"
+        android:id="@+id/btnBack"
         android:layout_gravity= "top"
         android:gravity="center_vertical|center_horizontal" />
 
     <ListView
-        android:id="@android:id/list"
+        android:id="@+id/friendList"
         android:layout_width="match_parent"
         android:layout_height="393dp"
         android:layout_weight="1.10">
@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Friend"
-        android:id="@+id/button8"
+        android:id="@+id/btnAdd"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
