@@ -28,8 +28,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="FriendsList"
-        android:onClick="friendsPressed"
         android:id="@+id/btnFriends"
+        android:onClick="friendsPressed"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />

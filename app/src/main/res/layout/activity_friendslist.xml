@@ -8,6 +8,7 @@
         android:layout_height="wrap_content"
         android:text="Back"
         android:id="@+id/btnBack"
+        android:onClick="backPressed"
         android:layout_gravity= "top"
         android:gravity="center_vertical|center_horizontal" />
 
@@ -23,6 +24,7 @@
         android:layout_height="wrap_content"
         android:text="Add Friend"
         android:id="@+id/btnAdd"
+        android:onClick="addFriendPressed"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
