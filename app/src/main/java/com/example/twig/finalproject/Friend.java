@@ -46,4 +46,5 @@ public class Friend {
     public void setRating(int rate) {
         rating = rate;
     }
+    public String toString(){ return user.getName();}
 }
