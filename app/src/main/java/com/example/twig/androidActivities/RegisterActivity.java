@@ -1,4 +1,4 @@
-package com.example.twig.finalproject;
+package com.example.twig.androidActivities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,14 +10,17 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import com.example.twig.dataObjects.UserList;
+import com.example.twig.finalproject.R;
+import com.example.twig.dataObjects.Friend;
+import com.example.twig.dataObjects.User;
+
 /**
  * The activity in which the user registers for an account.
  *
  * @author Andrew
  */
 public class RegisterActivity extends Activity {
-    static ArrayList<User> userList = new ArrayList<User>();
-
     /**
      * Called upon activity creation.
      *
@@ -27,15 +30,6 @@ public class RegisterActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-    }
-
-    /**
-     * Returns the static list of all of the registered users.
-     *
-     * @return the list of users.
-     */
-    public static ArrayList getUserList() {
-        return userList;
     }
 
     /**
@@ -59,6 +53,8 @@ public class RegisterActivity extends Activity {
         String pass = ((EditText)findViewById(R.id.password_field)).getText().toString();
         String confirmPass = ((EditText)findViewById(R.id.confirm_password_field)).getText().toString();
         TextView errorMessage = ((TextView)findViewById(R.id.errorMessage));
+
+        ArrayList<User> userList = UserList.getUserList();
 
         //doesn't check if email is a valid email. this feature could be added later using regex
         //but for the purpose of this class it probably isn't that important to verify

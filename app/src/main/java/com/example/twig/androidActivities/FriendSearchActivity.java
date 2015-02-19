@@ -1,4 +1,4 @@
-package com.example.twig.finalproject;
+package com.example.twig.androidActivities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,6 +10,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import com.example.twig.dataObjects.CurrentUser;
+import com.example.twig.dataObjects.UserList;
+import com.example.twig.finalproject.R;
+import com.example.twig.dataObjects.User;
 
 /**
  * Activity that allows the user to log in.
@@ -53,12 +58,12 @@ public class FriendSearchActivity extends Activity {
      * @return true if addition is made, false otherwise
      */
     public boolean addToFriendsPressed(View view) {
-        User currentUser = ApplicationActivity.getCurrentUser();
-        ArrayList<User> userlist = RegisterActivity.getUserList();
+        User currentUser = CurrentUser.getCurrentUser();
+        ArrayList<User> userlist = UserList.getUserList();
         String queryString = txt.getText().toString();
 
         //no adding yourself as a friend!
-        if(queryString.equalsIgnoreCase(ApplicationActivity.getCurrentUser().getName())) {
+        if(queryString.equalsIgnoreCase(CurrentUser.getCurrentUser().getName())) {
             status.setText("You cannot add yourself as a friend.");
             status.setTextColor(0xFFFF0000);
             status.setVisibility(View.VISIBLE);
@@ -83,7 +88,7 @@ public class FriendSearchActivity extends Activity {
             }
         }
 
-        status.setText("User not found!");
+        status.setText("User not found.");
         status.setTextColor(0xFFFF0000);
         status.setVisibility(View.VISIBLE);
         return false;

@@ -1,16 +1,20 @@
-package com.example.twig.finalproject;
+package com.example.twig.androidActivities;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-
 import java.util.ArrayList;
+
+import com.example.twig.finalproject.R;
+import com.example.twig.dataObjects.Friend;
+import com.example.twig.dataObjects.User;
+import com.example.twig.dataObjects.CurrentUser;
 
 /**
  * Activity that allows the user to log in.
@@ -29,9 +33,9 @@ public class FriendListActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_friendslist);
+        setContentView(R.layout.activity_friendlist);
 
-        ArrayList<Friend> friendList = ApplicationActivity.getCurrentUser().getFriendList();
+        ArrayList<Friend> friendList = CurrentUser.getCurrentUser().getFriendList();
         txt = (TextView) findViewById(R.id.txtNumFriends);
         add = (Button) findViewById(R.id.btnAdd);
         friends = (ListView) findViewById(R.id.friendList);

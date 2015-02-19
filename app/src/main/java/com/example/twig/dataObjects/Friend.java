@@ -1,4 +1,4 @@
-package com.example.twig.finalproject;
+package com.example.twig.dataObjects;
 
 /**
  * Wrapper for a user, that also includes, their
