@@ -47,11 +47,23 @@ public class FriendListActivity extends Activity {
         txt.setText("You have " + friendList.size() + " friends.");
     }
 
+    /**
+     * Method called when add friends button is pressed.
+     * Sends the user to the friendSearchActivity.
+     *
+     * @param view - the add friends button.
+     */
     public void addFriendPressed(View view) {
         Intent intent = new Intent(this, FriendSearchActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Method called when back button is pressed.
+     * Sends the user to the applicationActivity.
+     *
+     * @param view - the back button.
+     */
     public void backPressed(View view) {
         Intent intent = new Intent(this, ApplicationActivity.class);
         startActivity(intent);

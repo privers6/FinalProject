@@ -1,12 +1,14 @@
 package com.example.twig.dataObjects;
 
+import java.io.Serializable;
+
 /**
  * Wrapper for a user, that also includes, their
  * rating as a friend.
  *
  * Created by Piyakorn on 2/12/2015.
  */
-public class Friend {
+public class Friend implements Serializable {
     private User user;
     private int rating;
 

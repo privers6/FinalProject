@@ -1,5 +1,6 @@
 package com.example.twig.dataObjects;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -7,7 +8,7 @@ import java.util.ArrayList;
  *
  * @author Andrew
  */
-public class User {
+public class User implements Serializable {
     private String name;
     private String password;
     private ArrayList<Friend> friendList;
@@ -52,6 +53,8 @@ public class User {
      */
     public void setPassword(String newPass) {
         password = newPass;
+
+        //TODO: save userlist
     }
 
     /**
@@ -66,7 +69,11 @@ public class User {
      *
      * @param newEmail - the new email
      */
-    public void setEmail(String newEmail) { email = newEmail; }
+    public void setEmail(String newEmail) {
+        email = newEmail;
+
+        //TODO: save userlist
+    }
 
     /**
      * Getter for the number of sales reported.
@@ -94,6 +101,8 @@ public class User {
     public boolean addFriend(User u) {
         Friend newFriend = new Friend(u);
         boolean found = false;
+
+        //no repeat additions
         for (Friend i: friendList) {
             if (i.getUser().getName().equalsIgnoreCase(u.getName())) {
                 return false;
@@ -101,6 +110,13 @@ public class User {
         }
 
         friendList.add(newFriend);
+
+        //ensures additions are mutual
+        if(!u.getFriendList().contains(this)) {
+            u.addFriend(this);
+        }
+
+        UserList.saveUserList();
         return true;
     }
 
@@ -116,7 +132,7 @@ public class User {
         if (!(obj instanceof User))
             return false;
 
-        return name.equals(((User)obj).getName());
+        return name.equalsIgnoreCase(((User) obj).getName());
     }
 
     /**

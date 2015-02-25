@@ -80,6 +80,7 @@ public class RegisterActivity extends Activity {
         }
 
         userList.add(new User(user, email, pass));
+        UserList.saveUserList();
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }

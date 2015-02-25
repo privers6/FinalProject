@@ -19,7 +19,7 @@ import com.example.twig.dataObjects.User;
 /**
  * Activity that allows the user to log in.
  *
- * Created by Andrew on 1/29/2015.
+ * Created by Thad on 2/17/2015.
  */
 public class FriendSearchActivity extends Activity {
     private EditText txt;
