@@ -48,4 +48,14 @@
         android:layout_marginTop="40dp"
         android:textSize="30dp" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:id="@+id/btnBack"
+        android:onClick="backPressed"
+        android:layout_below="@+id/txtSalesReported"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"/>
+
 </RelativeLayout>
