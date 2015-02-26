@@ -49,6 +49,16 @@
             android:label="Friend Detail Activity">
         </activity>
 
+        <activity
+            android:name="com.example.twig.androidActivities.InterestListActivity"
+            android:label="Interest List Activity">
+        </activity>
+
+        <activity
+            android:name="com.example.twig.androidActivities.RegisterInterestActivity"
+            android:label="Register Interest Activity">
+        </activity>
+
     </application>
 
 </manifest>
