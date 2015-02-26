@@ -1,4 +1,4 @@
-package com.example.twig.finalproject;
+package com.example.twig.androidActivities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,11 +9,16 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import com.example.twig.dataObjects.CurrentUser;
+import com.example.twig.dataObjects.User;
+import com.example.twig.dataObjects.Friend;
+import com.example.twig.dataObjects.UserList;
+import com.example.twig.finalproject.R;
+
 /**
  * Created by Andrew on 1/29/2015.
  */
 public class ApplicationActivity extends Activity {
-    private static User currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +31,8 @@ public class ApplicationActivity extends Activity {
         //this activity is sometimes started from activities other than login
         //so it is important to only perform these actions if the intent
         //starting this activity actually came from the login activity
-        if(usernameFromLoginActivity != null) {
-            ArrayList<User> userlist = RegisterActivity.getUserList();
+        if (usernameFromLoginActivity != null) {
+            ArrayList<User> userlist = UserList.getUserList();
 
             //because two users' equality is based solely on their username,
             //we can use a dummy user with just the username that we are searching for
@@ -39,11 +44,11 @@ public class ApplicationActivity extends Activity {
             //is already registered. if this assumption were to fail, currentUser would
             //remain null (or whatever it's previous value was) which could cause
             //problems. it SHOULDN'T ever fail though...
-            currentUser = userlist.get(userlist.indexOf(dummyUser));
+            CurrentUser.setCurrentUser(userlist.get(userlist.indexOf(dummyUser)));
         }
 
-        TextView loginText = (TextView)findViewById(R.id.successText);
-        loginText.setText("You have successfully logged in as " + currentUser.getName() + ".");
+        TextView loginText = (TextView) findViewById(R.id.successText);
+        loginText.setText("You have successfully logged in as " + CurrentUser.getCurrentUser().getName() + ".");
         //re-centers the text since it's length can vary based on
         loginText.setGravity(Gravity.CENTER_HORIZONTAL);
     }
@@ -55,16 +60,31 @@ public class ApplicationActivity extends Activity {
      */
     public void logoutPressed(View view) {
         Intent intent = new Intent(this, MainActivity.class);
-        currentUser = null;
+        CurrentUser.logOut();
+        startActivity(intent);
+    }
+
+    public void friendsPressed(View view) {
+        Intent intent = new Intent(this, FriendListActivity.class);
         startActivity(intent);
     }
 
     /**
-     * Returns the currently logged in user.
+     * Method called when the friend button is pressed.
      *
-     * @return the currently logged in user.
+     * @param view - the friend button
      */
-    public static User getCurrentUser() {
-        return currentUser;
+    public void friendButtonPressed(View view) {
+        //Intent intent = new Intent(this, FriendListActivity.class);
+        //startActivity(intent);
+    }
+
+    /**
+     * Method called when the notification button is pressed.
+     *
+     * @param view - the notification button
+     */
+    public void notificationButtonPressed(View view) {
+        //TODO: add notificationActivity
     }
 }

@@ -1,4 +1,4 @@
-package com.example.twig.finalproject;
+package com.example.twig.dataObjects;
 
 /**
  * Wrapper for a user, that also includes, their
@@ -46,4 +46,5 @@ public class Friend {
     public void setRating(int rate) {
         rating = rate;
     }
+    public String toString(){ return user.getName();}
 }

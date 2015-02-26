@@ -1,4 +1,4 @@
-package com.example.twig.finalproject;
+package com.example.twig.androidActivities;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -6,6 +6,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.content.Intent;
+
+import com.example.twig.finalproject.R;
+import com.example.twig.dataObjects.Friend;
+import com.example.twig.dataObjects.User;
 
 /**
  * The main activity, which launches whenever the app is started.
