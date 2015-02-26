@@ -77,9 +77,11 @@ public class FriendListActivity extends Activity implements OnItemClickListener 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent(this, FriendDetailActivity.class);
-//        TextView selectedText = (TextView)parent.getItemAtPosition(position);
-//        String selectedTextString = selectedText.getText().toString();
-//        intent.putExtra("USER_CLICKED", selectedTextString);
+        String selectedTextString = ((TextView)view).getText().toString();
+        intent.putExtra("USER_CLICKED", selectedTextString);
+
+        System.out.println(selectedTextString);
+
         startActivity(intent);
     }
 }
