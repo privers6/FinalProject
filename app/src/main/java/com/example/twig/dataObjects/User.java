@@ -11,6 +11,7 @@ public class User {
     private String name;
     private String password;
     private ArrayList<Friend> friendList;
+    private ArrayList<Interest> interestList;
     private String email;
     private int salesReported;
 
@@ -25,6 +26,7 @@ public class User {
         email = e;
         password = p;
         friendList = new ArrayList<Friend>();
+        interestList = new ArrayList<Interest>();
         salesReported = 0;
     }
 
@@ -85,6 +87,15 @@ public class User {
     }
 
     /**
+     * Getter for the interests list.
+     *
+     * @return the interests list.
+     */
+    public ArrayList<Interest>getInterestList() {
+        return interestList;
+    }
+
+    /**
      * Adds a user to this user's friend list. If user
      * is already in friend list, do not do the addition.
      *
@@ -102,6 +113,17 @@ public class User {
 
         friendList.add(newFriend);
         return true;
+    }
+
+    /**
+     * Adds an interest to this user's interest list.
+     *
+     * @param name - Name of the interest.
+     * @param price - Price of the interest.
+     */
+    public void addInterest(String name, double price) {
+        Interest i = new Interest(name, price);
+        interestList.add(i);
     }
 
     /**

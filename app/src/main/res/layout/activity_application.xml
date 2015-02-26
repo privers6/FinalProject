@@ -33,4 +33,15 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Interests"
+        android:id="@+id/interest_button"
+        android:layout_below="@+id/LogoutButton"
+        android:layout_toLeftOf="@+id/LogoutButton"
+        android:layout_toStartOf="@+id/LogoutButton"
+        android:layout_marginTop="55dp"
+        android:onClick="interestsPressed" />
 </RelativeLayout>
