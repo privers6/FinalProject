@@ -12,6 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import com.example.twig.dataObjects.CurrentUser;
+import com.example.twig.dataObjects.Friend;
 import com.example.twig.dataObjects.UserList;
 import com.example.twig.finalproject.R;
 import com.example.twig.dataObjects.User;
@@ -57,7 +58,7 @@ public class FriendSearchActivity extends Activity {
      * @param view the add to friends button
      * @return true if addition is made, false otherwise
      */
-    public boolean addToFriendsPressed(View view) {
+    public void addToFriendsPressed(View view) {
         User currentUser = CurrentUser.getCurrentUser();
         ArrayList<User> userlist = UserList.getUserList();
         String queryString = txt.getText().toString();
@@ -67,7 +68,7 @@ public class FriendSearchActivity extends Activity {
             status.setText("You cannot add yourself as a friend.");
             status.setTextColor(0xFFFF0000);
             status.setVisibility(View.VISIBLE);
-            return false;
+            return;
         }
 
         for(User u: userlist) {
@@ -84,13 +85,34 @@ public class FriendSearchActivity extends Activity {
                     status.setTextColor(0xFFFF0000);
                     status.setVisibility(View.VISIBLE);
                 }
-                return success;
+                return;
             }
         }
 
         status.setText("User not found.");
         status.setTextColor(0xFFFF0000);
         status.setVisibility(View.VISIBLE);
-        return false;
+        return;
+    }
+
+    public void deleteFriendPressed(View view) {
+        User currentUser = CurrentUser.getCurrentUser();
+        ArrayList<User> userlist = UserList.getUserList();
+        String queryString = txt.getText().toString();
+
+        for(Friend f: currentUser.getFriendList()) {
+            if (queryString.equalsIgnoreCase(f.getUser().getName())) {
+                currentUser.removeFriend(f.getUser());
+                status.setText(f.getUser().getName() + " removed as a friend.");
+                status.setTextColor(0xFF00FF00);
+                status.setVisibility(View.VISIBLE);
+                return;
+            }
+        }
+
+
+        status.setText(queryString + " is not on your friend's list.");
+        status.setTextColor(0xFFFF0000);
+        status.setVisibility(View.VISIBLE);
     }
 }

@@ -97,10 +97,10 @@ public class User implements Serializable {
      *
      * @param u - User to get wrapped in a Friend object
      *          and added to the friends list.
+     * @return whether or not the addition occured
      */
     public boolean addFriend(User u) {
         Friend newFriend = new Friend(u);
-        boolean found = false;
 
         //no repeat additions
         for (Friend i: friendList) {
@@ -118,6 +118,41 @@ public class User implements Serializable {
 
         UserList.saveUserList();
         return true;
+    }
+
+    /**
+     * Removes the specified user from this user's
+     * friend list.
+     *
+     * @param u - the user to remove from the friend list
+     * @return whether or not a removal occured
+     */
+    public boolean removeFriend(User u) {
+        if(friendList.remove(getFriendFromUser(u))) {
+            u.removeFriend(this);
+            UserList.saveUserList();
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Takes in a user object, and returns the corresponding
+     * friend wrapper for this user. Returns null if the user
+     * is not on the friends list.
+     *
+     * @param u - the user whose friend wrapper is to be returned
+     * @return the friend wrappper for u, null if u is not a friend
+     */
+    public Friend getFriendFromUser(User u) {
+        for(Friend f: friendList) {
+            if (u.equals(f.getUser())) {
+                return f;
+            }
+        }
+
+        return null;
     }
 
     /**
