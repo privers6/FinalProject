@@ -44,6 +44,11 @@
             android:label="Friend Search Activity">
         </activity>
 
+        <activity
+            android:name="com.example.twig.androidActivities.FriendDetailActivity"
+            android:label="Friend Detail Activity">
+        </activity>
+
     </application>
 
 </manifest>
