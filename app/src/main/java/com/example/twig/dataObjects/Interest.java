@@ -1,9 +1,12 @@
 package com.example.twig.dataObjects;
 
+import java.io.Serializable;
+import java.text.DecimalFormat;
+
 /**
  * Created by Piyakorn on 2/24/2015.
  */
-public class Interest {
+public class Interest implements Serializable {
     private String name;
     private double price;
 
@@ -51,6 +54,6 @@ public class Interest {
      *
      * @return String representation of an Interest
      */
-    public String toString() { return name + " - Max Price: " + price; }
+    public String toString() { return name + " --- Max Price: $" + new DecimalFormat("0.00").format(price); }
 
 }

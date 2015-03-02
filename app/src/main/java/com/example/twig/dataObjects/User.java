@@ -175,6 +175,8 @@ public class User implements Serializable {
     public void addInterest(String name, double price) {
         Interest i = new Interest(name, price);
         interestList.add(i);
+
+        UserList.saveUserList();
     }
 
     /**

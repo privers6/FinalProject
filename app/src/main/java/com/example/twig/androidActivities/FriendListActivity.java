@@ -80,8 +80,6 @@ public class FriendListActivity extends Activity implements OnItemClickListener 
         String selectedTextString = ((TextView)view).getText().toString();
         intent.putExtra("USER_CLICKED", selectedTextString);
 
-        System.out.println(selectedTextString);
-
         startActivity(intent);
     }
 }
