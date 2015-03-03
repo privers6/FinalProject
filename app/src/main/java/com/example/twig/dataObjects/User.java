@@ -1,5 +1,6 @@
 package com.example.twig.dataObjects;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -7,7 +8,7 @@ import java.util.ArrayList;
  *
  * @author Andrew
  */
-public class User {
+public class User implements Serializable {
     private String name;
     private String password;
     private ArrayList<Friend> friendList;
@@ -54,6 +55,8 @@ public class User {
      */
     public void setPassword(String newPass) {
         password = newPass;
+
+        //TODO: save userlist
     }
 
     /**
@@ -68,7 +71,11 @@ public class User {
      *
      * @param newEmail - the new email
      */
-    public void setEmail(String newEmail) { email = newEmail; }
+    public void setEmail(String newEmail) {
+        email = newEmail;
+
+        //TODO: save userlist
+    }
 
     /**
      * Getter for the number of sales reported.
@@ -101,10 +108,12 @@ public class User {
      *
      * @param u - User to get wrapped in a Friend object
      *          and added to the friends list.
+     * @return whether or not the addition occured
      */
     public boolean addFriend(User u) {
         Friend newFriend = new Friend(u);
-        boolean found = false;
+
+        //no repeat additions
         for (Friend i: friendList) {
             if (i.getUser().getName().equalsIgnoreCase(u.getName())) {
                 return false;
@@ -112,7 +121,49 @@ public class User {
         }
 
         friendList.add(newFriend);
+
+        //ensures additions are mutual
+        if(!u.getFriendList().contains(this)) {
+            u.addFriend(this);
+        }
+
+        UserList.saveUserList();
         return true;
+    }
+
+    /**
+     * Removes the specified user from this user's
+     * friend list.
+     *
+     * @param u - the user to remove from the friend list
+     * @return whether or not a removal occured
+     */
+    public boolean removeFriend(User u) {
+        if(friendList.remove(getFriendFromUser(u))) {
+            u.removeFriend(this);
+            UserList.saveUserList();
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Takes in a user object, and returns the corresponding
+     * friend wrapper for this user. Returns null if the user
+     * is not on the friends list.
+     *
+     * @param u - the user whose friend wrapper is to be returned
+     * @return the friend wrappper for u, null if u is not a friend
+     */
+    public Friend getFriendFromUser(User u) {
+        for(Friend f: friendList) {
+            if (u.equals(f.getUser())) {
+                return f;
+            }
+        }
+
+        return null;
     }
 
     /**
@@ -124,6 +175,8 @@ public class User {
     public void addInterest(String name, double price) {
         Interest i = new Interest(name, price);
         interestList.add(i);
+
+        UserList.saveUserList();
     }
 
     /**
@@ -138,7 +191,7 @@ public class User {
         if (!(obj instanceof User))
             return false;
 
-        return name.equals(((User)obj).getName());
+        return name.equalsIgnoreCase(((User) obj).getName());
     }
 
     /**

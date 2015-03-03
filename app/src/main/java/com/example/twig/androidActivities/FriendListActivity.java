@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -15,13 +16,15 @@ import com.example.twig.finalproject.R;
 import com.example.twig.dataObjects.Friend;
 import com.example.twig.dataObjects.User;
 import com.example.twig.dataObjects.CurrentUser;
+import android.content.Intent;
+import android.widget.AdapterView.OnItemClickListener;
 
 /**
  * Activity that allows the user to log in.
  *
  * Created by Andrew on 1/29/2015.
  */
-public class FriendListActivity extends Activity {
+public class FriendListActivity extends Activity implements OnItemClickListener {
     private TextView txt;
     private Button add;
     private ListView friends;
@@ -42,18 +45,41 @@ public class FriendListActivity extends Activity {
 
         ArrayAdapter<User> adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,
                 friendList);
+
         friends.setAdapter(adapter);
+        friends.setOnItemClickListener(this);
 
         txt.setText("You have " + friendList.size() + " friends.");
     }
 
+    /**
+     * Method called when add friends button is pressed.
+     * Sends the user to the friendSearchActivity.
+     *
+     * @param view - the add friends button.
+     */
     public void addFriendPressed(View view) {
         Intent intent = new Intent(this, FriendSearchActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Method called when back button is pressed.
+     * Sends the user to the applicationActivity.
+     *
+     * @param view - the back button.
+     */
     public void backPressed(View view) {
         Intent intent = new Intent(this, ApplicationActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent(this, FriendDetailActivity.class);
+        String selectedTextString = ((TextView)view).getText().toString();
+        intent.putExtra("USER_CLICKED", selectedTextString);
+
         startActivity(intent);
     }
 }
