@@ -37,6 +37,7 @@ public class MainActivity extends Activity {
         //initialize the user list to write to / read from the correct file
         UserList.setSaveFilename(getFilesDir().getPath() + "userlist.dat");
         UserList.loadUserList();
+        System.out.println("loaded data");
     }
 
     /**
