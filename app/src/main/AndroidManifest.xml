@@ -7,8 +7,9 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.twig.androidActivities.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,6 +17,53 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.example.twig.androidActivities.LoginActivity"
+            android:label="Login Activity"
+            android:parentActivityName="com.example.twig.androidActivities.MainActivity">
+        </activity>
+
+        <activity
+            android:name="com.example.twig.androidActivities.ApplicationActivity"
+            android:label="Application Activity">
+        </activity>
+
+        <activity
+            android:name="com.example.twig.androidActivities.RegisterActivity"
+            android:label="Register Activity">
+        </activity>
+
+        <activity
+            android:name="com.example.twig.androidActivities.FriendListActivity"
+            android:label="Friend List Activity">
+        </activity>
+
+        <activity
+            android:name="com.example.twig.androidActivities.FriendSearchActivity"
+            android:label="Friend Search Activity">
+        </activity>
+
+        <activity
+            android:name="com.example.twig.androidActivities.FriendDetailActivity"
+            android:label="Friend Detail Activity">
+        </activity>
+
+        <activity
+            android:name="com.example.twig.androidActivities.InterestListActivity"
+            android:label="Interest List Activity">
+        </activity>
+
+        <activity
+            android:name="com.example.twig.androidActivities.RegisterInterestActivity"
+            android:label="Register Interest Activity">
+        </activity>
+
+        <activity
+            android:name="com.example.twig.androidActivities.SalesReportActivity"
+            android:label="Sales Report Activity">
+        </activity>
+
     </application>
 
 </manifest>

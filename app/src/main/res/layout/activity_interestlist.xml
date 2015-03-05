@@ -7,23 +7,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Back"
-        android:id="@+id/button5"
+        android:id="@+id/btnBack"
+        android:onClick="backPressed"
         android:layout_gravity= "top"
         android:gravity="center_vertical|center_horizontal" />
 
     <ListView
-        android:id="@android:id/list"
+        android:id="@+id/interestList"
         android:layout_width="match_parent"
-        android:layout_height="393dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp"
         android:layout_weight="1.10">
     </ListView>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Friend"
-        android:id="@+id/button8"
+        android:text="Add Interest"
+        android:id="@+id/btnAdd"
+        android:onClick="addInterestPressed"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="You have X active interests"
+        android:id="@+id/txtNumInterests"
+        android:layout_below="@+id/btnBack"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
+
 </RelativeLayout>

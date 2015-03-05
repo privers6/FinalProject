@@ -1,4 +1,4 @@
-package com.example.twig.finalproject;
+package com.example.twig.androidActivities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +8,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import com.example.twig.dataObjects.UserList;
+import com.example.twig.finalproject.R;
+import com.example.twig.dataObjects.Friend;
+import com.example.twig.dataObjects.User;
 
 /**
  * Activity that allows the user to log in.
@@ -45,12 +50,13 @@ public class LoginActivity extends Activity {
         String user = ((EditText)findViewById(R.id.username_field)).getText().toString();
         String pass = ((EditText)findViewById(R.id.password_field)).getText().toString();
 
-        ArrayList<User> userList = RegisterActivity.getUserList();
+        ArrayList<User> userList = UserList.getUserList();
 
         for(User u: userList) {
             if(user.equalsIgnoreCase(u.getName())) {
                 if(pass.equals(u.getPassword())) {
                     Intent intent = new Intent(this, ApplicationActivity.class);
+                    intent.putExtra("LOGIN_MESSAGE", u.getName());
                     startActivity(intent);
                     return;
                 }

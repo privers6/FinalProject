@@ -7,13 +7,12 @@
     android:id="@+id/Main"
     android:background="#5c5c5c">
 
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="REGISTER"
-        android:id="@+id/RegisterText"
+        android:text="SALE"
+        android:id="@+id/SaleText"
         android:layout_marginTop="67dp"
         android:textSize="60dp"
         android:textColor="#ff9fff80"
@@ -25,88 +24,72 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/username_field"
+        android:id="@+id/sale_name_field"
         android:width="250dp"
-        android:hint="Username"
-        android:layout_below="@+id/RegisterText"
+        android:hint="Name"
+        android:layout_below="@+id/SaleText"
         android:layout_marginTop="80dp"
-        android:layout_alignLeft="@+id/confirm_password_field"
-        android:layout_alignStart="@+id/confirm_password_field" />
+        android:layout_alignLeft="@+id/sale_location_field"
+        android:layout_alignStart="@+id/sale_location_field" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
+        android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/email_field"
+        android:id="@+id/sale_price_field"
         android:layout_marginTop="10dp"
         android:width="250dp"
-        android:hint="Email Address"
+        android:hint="Price"
         android:clickable="true"
-        android:layout_below="@+id/username_field"
-        android:layout_alignLeft="@+id/username_field"
-        android:layout_alignStart="@+id/username_field" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/password_field"
-        android:layout_marginTop="10dp"
-        android:width="250dp"
-        android:hint="Password"
-        android:clickable="true"
-        android:layout_below="@+id/email_field"
-        android:layout_alignLeft="@+id/username_field"
-        android:layout_alignStart="@+id/username_field" />
+        android:layout_below="@+id/sale_name_field"
+        android:layout_alignLeft="@+id/sale_name_field"
+        android:layout_alignStart="@+id/sale_name_field" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="REGISTER"
-        android:id="@+id/registerButton"
+        android:text="SUBMIT"
+        android:id="@+id/submitButton"
         android:width="120dp"
         android:clickable="true"
-        android:onClick="registerPressed"
-        android:layout_alignTop="@+id/button4"
-        android:layout_alignRight="@+id/password_field"
-        android:layout_alignEnd="@+id/password_field" />
+        android:onClick="salesReportPressed"
+        android:layout_alignTop="@+id/backButton"
+        android:layout_alignRight="@+id/sale_price_field"
+        android:layout_alignEnd="@+id/sale_price_field" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CANCEL"
-        android:id="@+id/button4"
+        android:text="BACK"
+        android:id="@+id/backButton"
         android:width="120dp"
-        android:onClick="cancelPressed"
-        android:layout_below="@+id/confirm_password_field"
-        android:layout_alignLeft="@+id/confirm_password_field"
-        android:layout_alignStart="@+id/confirm_password_field"
+        android:onClick="backPressed"
+        android:layout_below="@+id/sale_location_field"
+        android:layout_alignLeft="@+id/sale_location_field"
+        android:layout_alignStart="@+id/sale_location_field"
         android:layout_marginTop="42dp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
+        android:inputType="textPersonName"
         android:ems="10"
         android:width="250dp"
-        android:id="@+id/confirm_password_field"
-        android:layout_below="@+id/password_field"
+        android:id="@+id/sale_location_field"
+        android:layout_below="@+id/sale_price_field"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:hint="Confirm Password" />
+        android:hint="Location" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Filler Text"
-        android:id="@+id/errorMessage"
-        android:textColor="#FF0000"
-        android:layout_below="@+id/confirm_password_field"
+        android:id="@+id/message"
+        android:layout_below="@+id/sale_location_field"
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
         android:visibility="invisible" />
-
 </RelativeLayout>
