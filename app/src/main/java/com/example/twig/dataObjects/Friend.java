@@ -20,7 +20,7 @@ public class Friend implements Serializable {
      */
     public Friend(User u) {
         user = u;
-        rating = 0;
+        rating = 0; //-1 means no rating has been given
     }
 
     /**
@@ -47,6 +47,10 @@ public class Friend implements Serializable {
      */
     public void setRating(int rate) {
         rating = rate;
+        UserList.saveUserList();
     }
-    public String toString(){ return user.getName();}
+
+    public String toString() {
+        return user.getName();
+    }
 }
