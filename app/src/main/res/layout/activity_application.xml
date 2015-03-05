@@ -50,8 +50,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:width="130dp"
-        android:text="Report Sales"
+        android:width="150dp"
+        android:text="Reported Sales"
         android:id="@+id/btnSales"
         android:onClick="salesReportPressed"
         android:layout_alignBottom="@+id/btnInterests"

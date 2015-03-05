@@ -60,6 +60,11 @@
         </activity>
 
         <activity
+            android:name="com.example.twig.androidActivities.SalesListActivity"
+            android:label="Sales Report Activity">
+        </activity>
+
+        <activity
             android:name="com.example.twig.androidActivities.SalesReportActivity"
             android:label="Sales Report Activity">
         </activity>

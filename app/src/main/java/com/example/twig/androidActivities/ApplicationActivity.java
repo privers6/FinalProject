@@ -99,7 +99,7 @@ public class ApplicationActivity extends Activity {
      * @param view - the sales button
      */
     public void salesReportPressed(View view) {
-        Intent intent = new Intent(this, SalesReportActivity.class);
+        Intent intent = new Intent(this, SalesListActivity.class);
         startActivity(intent);
     }
 }

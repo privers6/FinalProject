@@ -13,6 +13,7 @@ public class User implements Serializable {
     private String password;
     private ArrayList<Friend> friendList;
     private ArrayList<Interest> interestList;
+    private ArrayList<Sale> saleList;
     private String email;
     private int salesReported;
 
@@ -28,6 +29,7 @@ public class User implements Serializable {
         password = p;
         friendList = new ArrayList<Friend>();
         interestList = new ArrayList<Interest>();
+        saleList = new ArrayList<Sale>();
         salesReported = 0;
     }
 
@@ -90,7 +92,7 @@ public class User implements Serializable {
      * @param newSale - the new email
      */
     public void setSalesReported(int newSale) {
-        salesReported = newSale + 1;
+        salesReported = newSale;
     }
     /**
      * Getter for the friends list.
@@ -109,7 +111,14 @@ public class User implements Serializable {
     public ArrayList<Interest>getInterestList() {
         return interestList;
     }
-
+    /**
+     * Getter for the sale list.
+     *
+     * @return the sale list.
+     */
+    public ArrayList<Sale> getSaleList() {
+        return saleList;
+    }
     /**
      * Adds a user to this user's friend list. If user
      * is already in friend list, do not do the addition.
@@ -183,6 +192,20 @@ public class User implements Serializable {
     public void addInterest(String name, double price) {
         Interest i = new Interest(name, price);
         interestList.add(i);
+
+        UserList.saveUserList();
+    }
+
+    /**
+     * Adds an sale to this user's sale list.
+     *
+     * @param name - Name of the sale.
+     * @param price - Price of the sale.
+     * @param location - Location of the sale
+     */
+    public void addSale(String name, double price, String location) {
+        Sale s = new Sale(name, price, location);
+        saleList.add(s);
 
         UserList.saveUserList();
     }

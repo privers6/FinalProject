@@ -1,6 +1,7 @@
 package com.example.twig.dataObjects;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 
 /**
  * Created by Piyakorn on 3/5/2015.
@@ -62,6 +63,10 @@ public class Sale implements Serializable {
      */
     public void setLocation(String l) {
         location = l;
+    }
+
+    public String toString() {
+        return (name + ": $" + new DecimalFormat("0.00").format(price) + " at " + location);
     }
 
 }
