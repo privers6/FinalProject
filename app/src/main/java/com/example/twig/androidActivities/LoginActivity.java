@@ -2,17 +2,14 @@ package com.example.twig.androidActivities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
-import com.example.twig.dataObjects.UserList;
+import com.example.twig.controllers.AppController;
 import com.example.twig.finalproject.R;
-import com.example.twig.dataObjects.Friend;
-import com.example.twig.dataObjects.User;
 
 /**
  * Activity that allows the user to log in.
@@ -21,7 +18,9 @@ import com.example.twig.dataObjects.User;
  */
 public class LoginActivity extends Activity {
     /**
-     * Called upon activity creation.
+     * Called upon activity creation. If the activity is created from a
+     * successful registration, then gives the user an acknowledgement of
+     * the registration success.
      *
      * @param savedInstanceState
      */
@@ -29,6 +28,15 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        String fillName = getIntent().getStringExtra("FROM_REGISTER");
+        if(fillName != null) {
+            ((EditText)findViewById(R.id.username_field)).setText(fillName);
+            ((EditText)findViewById(R.id.password_field)).requestFocus();
+            displayMessage("Registration Successful", Color.GREEN);
+        } else {
+            ((EditText)findViewById(R.id.username_field)).requestFocus();
+        }
     }
 
     /**
@@ -37,7 +45,7 @@ public class LoginActivity extends Activity {
      * @param view - the cancel button
      */
     public void cancelPressed(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, WelcomeActivity.class);
         startActivity(intent);
     }
 
@@ -50,19 +58,25 @@ public class LoginActivity extends Activity {
         String user = ((EditText)findViewById(R.id.username_field)).getText().toString();
         String pass = ((EditText)findViewById(R.id.password_field)).getText().toString();
 
-        ArrayList<User> userList = UserList.getUserList();
+        AppController appController = AppController.getAppController();
+        boolean success = appController.login(user, pass, this);
 
-        for(User u: userList) {
-            if(user.equalsIgnoreCase(u.getName())) {
-                if(pass.equals(u.getPassword())) {
-                    Intent intent = new Intent(this, ApplicationActivity.class);
-                    intent.putExtra("LOGIN_MESSAGE", u.getName());
-                    startActivity(intent);
-                    return;
-                }
-            }
+        if(success) {
+            Intent intent = new Intent(this, ApplicationActivity.class);
+            startActivity(intent);
         }
+    }
 
-        findViewById(R.id.invalid_message).setVisibility(View.VISIBLE);
+    /**
+     * Display message upon invalid login or succesful registration.
+     *
+     * @param str the message to display
+     * @param color the color the message should display
+     */
+    public void displayMessage(String str, int color) {
+        TextView msg = (TextView)findViewById(R.id.message);
+        msg.setText(str);
+        msg.setTextColor(color);
+        msg.setVisibility(View.VISIBLE);
     }
 }

@@ -7,15 +7,16 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.twig.controllers.InterestController;
+import com.example.twig.controllers.SaleController;
 import com.example.twig.finalproject.R;
 
+
 /**
- * Activity in which a user can add an interest to his account.
+ * Activity in which the user can report a sale to his friends.
  *
- * Created by Porter Rivers on 2/26/2015.
+ * Created by Piyakorn on 3/3/2015.
  */
-public class RegisterInterestActivity extends Activity{
+public class SalesReportActivity extends Activity{
     /**
      * Called upon activity creation.
      *
@@ -24,16 +25,17 @@ public class RegisterInterestActivity extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registerinterest);
+        setContentView(R.layout.activity_salesreport);
     }
 
     /**
-     * Method called when the back button is pressed.
+     * Method called when the back button is pressed. Returns to the
+     * sales list activity
      *
-     * @param view - the cancel button
+     * @param view - the back button
      */
     public void backPressed(View view) {
-        Intent intent = new Intent(this, InterestListActivity.class);
+        Intent intent = new Intent(this, SalesListActivity.class);
         startActivity(intent);
     }
 
@@ -42,26 +44,31 @@ public class RegisterInterestActivity extends Activity{
      *
      * @param view - the register button
      */
-    public void registerPressed(View view) {
-        EditText nameField = (EditText)findViewById(R.id.name_field);
-        EditText priceField = (EditText)findViewById(R.id.item_price_field);
+    public void submitPressed(View view) {
+        EditText nameField = (EditText)findViewById(R.id.sale_name_field);
+        EditText priceField = (EditText)findViewById(R.id.sale_price_field);
+        EditText locationField = (EditText)findViewById(R.id.sale_location_field);
 
         String name = nameField.getText().toString();
         String price = priceField.getText().toString();
+        String location = locationField.getText().toString();
 
-        InterestController interestController = InterestController.getInterestController();
-        boolean success = interestController.registerInterest(name, price, this);
+        SaleController saleController = SaleController.getSaleController();
+        boolean success = saleController.reportSale(name, price, location, this);
 
         if(success) {
             nameField.setText("");
             priceField.setText("");
+            locationField.setText("");
             nameField.requestFocus();
         }
     }
 
     /**
-     * Displays a message to the user.
+     * Display message upon invalid login or succesful registration.
      *
+     * @param str the message to display
+     * @param color the color the message should display
      */
     public void displayMessage(String str, int color) {
         TextView msg = (TextView)findViewById(R.id.message);

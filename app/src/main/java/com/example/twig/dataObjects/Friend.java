@@ -11,6 +11,7 @@ import java.io.Serializable;
 public class Friend implements Serializable {
     private User user;
     private int rating;
+    private int salesReported; //is this stored in friend or user? currently only use the one in user....
 
 
     /**
@@ -21,6 +22,7 @@ public class Friend implements Serializable {
     public Friend(User u) {
         user = u;
         rating = 0; //-1 means no rating has been given
+        salesReported = 0;
     }
 
     /**
@@ -50,6 +52,27 @@ public class Friend implements Serializable {
         UserList.saveUserList();
     }
 
+    /**
+     * Increments sales reported for the friend.
+     */
+    public void incrementSalesReported() {
+        salesReported++;
+    }
+
+    /**
+     * Getter for sales reported.
+     *
+     * @return number of sales reported.
+     */
+    public int getSalesReported() {
+        return salesReported;
+    }
+
+    /**
+     * Returns the friend's name.
+     *
+     * @return friend's name.
+     */
     public String toString() {
         return user.getName();
     }

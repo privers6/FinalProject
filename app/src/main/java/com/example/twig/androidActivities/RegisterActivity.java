@@ -3,17 +3,13 @@ package com.example.twig.androidActivities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
-import com.example.twig.dataObjects.UserList;
+import com.example.twig.controllers.AppController;
+import com.example.twig.controllers.UserController;
 import com.example.twig.finalproject.R;
-import com.example.twig.dataObjects.Friend;
-import com.example.twig.dataObjects.User;
 
 /**
  * The activity in which the user registers for an account.
@@ -38,7 +34,7 @@ public class RegisterActivity extends Activity {
      * @param view - the cancel button
      */
     public void cancelPressed(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, WelcomeActivity.class);
         startActivity(intent);
     }
 
@@ -52,36 +48,32 @@ public class RegisterActivity extends Activity {
         String email = ((EditText)findViewById(R.id.email_field)).getText().toString();
         String pass = ((EditText)findViewById(R.id.password_field)).getText().toString();
         String confirmPass = ((EditText)findViewById(R.id.confirm_password_field)).getText().toString();
-        TextView errorMessage = ((TextView)findViewById(R.id.errorMessage));
 
-        ArrayList<User> userList = UserList.getUserList();
-
-        //doesn't check if email is a valid email. this feature could be added later using regex
-        //but for the purpose of this class it probably isn't that important to verify
-
-        if(user.isEmpty() || email.isEmpty() || pass.isEmpty() || confirmPass.isEmpty()) {
-            errorMessage.setText("One or more fields are empty");
-            errorMessage.setVisibility(View.VISIBLE);
+        //TODO: remove this before the final due date. this is just a hack to delete all data.
+        if(user.equalsIgnoreCase("Delete All Data") && email.isEmpty() && pass.equals("Team 57") && confirmPass.isEmpty()) {
+            AppController.getAppController().deleteAllData(this);
             return;
         }
 
-        if(!pass.equals(confirmPass)) {
-            errorMessage.setText("Confirm password does not match password");
-            errorMessage.setVisibility(View.VISIBLE);
-            return;
-        }
+        boolean success = UserController.getUserController().registerUser(user, pass, confirmPass, email, this);
 
-        for(User u: userList) {
-            if(user.equalsIgnoreCase(u.getName())) {
-                errorMessage.setText("Username already taken. Please try a different one.");
-                errorMessage.setVisibility(View.VISIBLE);
-                return;
-            }
+        if (success) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.putExtra("FROM_REGISTER", user);
+            startActivity(intent);
         }
+    }
 
-        userList.add(new User(user, email, pass));
-        UserList.saveUserList();
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
+    /**
+     * Display message upon invalid registration.
+     *
+     * @param str the message to display
+     * @param color the color the message should display
+     */
+    public void displayMessage(String str, int color) {
+        TextView msg = (TextView)findViewById(R.id.message);
+        msg.setText(str);
+        msg.setTextColor(color);
+        msg.setVisibility(View.VISIBLE);
     }
 }

@@ -19,9 +19,14 @@
         </activity>
 
         <activity
+            android:name="com.example.twig.androidActivities.WelcomeActivity"
+            android:label="Welcome Activity">
+        </activity>
+
+        <activity
             android:name="com.example.twig.androidActivities.LoginActivity"
-            android:label="Login Activity"
-            android:parentActivityName="com.example.twig.androidActivities.MainActivity">
+            android:label="Login Activity">
+            android:parentActivityName="com.example.twig.androidActivities.WelcomeActivity">
         </activity>
 
         <activity
@@ -57,6 +62,16 @@
         <activity
             android:name="com.example.twig.androidActivities.RegisterInterestActivity"
             android:label="Register Interest Activity">
+        </activity>
+
+        <activity
+            android:name="com.example.twig.androidActivities.SalesListActivity"
+            android:label="Sales List Activity">
+        </activity>
+
+        <activity
+            android:name="com.example.twig.androidActivities.SalesReportActivity"
+            android:label="Sales Report Activity">
         </activity>
 
     </application>

@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.text.DecimalFormat;
 
 /**
+ * Data object representing an interest that a user has registered for. Users will be notified
+ * of reported sales for items that they have an interest in.
+ *
  * Created by Piyakorn on 2/24/2015.
  */
 public class Interest implements Serializable {
@@ -50,7 +53,7 @@ public class Interest implements Serializable {
     }
 
     /**
-     * toString method for the Interest class
+     * toString method for the Interest class. Prints the item's name and max price.
      *
      * @return String representation of an Interest
      */

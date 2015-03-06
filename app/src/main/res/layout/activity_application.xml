@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="#5c5c5c">
+    android:background="#838383">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="You have successfully logged in"
-        android:id="@+id/successText"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:textSize="20dp" />
+        android:id="@+id/loginText"
+        android:textSize="20dp"
+        android:layout_below="@+id/btnLogout"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="180dp"
@@ -39,11 +39,23 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:width="130dp"
+        android:width="180dp"
         android:text="Interests"
         android:id="@+id/btnInterests"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:onClick="interestsPressed" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="180dp"
+        android:text="My Sales"
+        android:id="@+id/btnSales"
+        android:onClick="mySalesPressed"
+        android:layout_alignBottom="@+id/btnInterests"
+        android:layout_alignRight="@+id/btnLogout"
+        android:layout_alignEnd="@+id/btnLogout" />
+
 </RelativeLayout>
