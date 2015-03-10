@@ -4,6 +4,7 @@ import android.graphics.Color;
 
 import com.example.twig.androidActivities.SalesReportActivity;
 import com.example.twig.dataObjects.CurrentUser;
+import com.example.twig.dataObjects.Friend;
 import com.example.twig.dataObjects.Sale;
 import com.example.twig.dataObjects.User;
 
@@ -79,6 +80,23 @@ public class SaleController {
         u.setSalesReported(u.getSalesReported() + 1);
         activity.displayMessage("Sale reported successfully!", Color.GREEN);
         return true;
+    }
+
+    /**
+     * Returns an ArrayList of sales to be displayed
+     *
+     * @return displayed sales
+     */
+    public ArrayList<Friend> getDisplaySale() {
+        ArrayList<Friend> sales = new ArrayList<Friend>();
+        for (int i = 0; i < FriendController.getFriendController().friendListSize(); i++) {
+            sales.add(FriendController.getFriendController().getFriendList().get(i));
+            //initial attempt.  Tried getting just the friends to show as a test.
+            /*for (int j = 0; j < FriendController.getFriendController().getFriendList().get(i).getSalesReported(); j++) {
+                sales.add(FriendController.getFriendController().getFriendList().get(i).getUser().getSaleList().get(j));
+            }*/
+        }
+        return sales;
     }
 
     /**

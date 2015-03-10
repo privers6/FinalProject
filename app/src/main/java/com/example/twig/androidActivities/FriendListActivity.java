@@ -17,7 +17,7 @@ import com.example.twig.finalproject.R;
 
 /**
  * Activity that displays a list of all of the current user's friends.
- * Each friend may be clicked on to launch a FriendDetailActivity
+ * Each friend may be clicked on to launch a FriendDetailActivit
  *
  * Created by Andrew on 1/29/2015.
  */

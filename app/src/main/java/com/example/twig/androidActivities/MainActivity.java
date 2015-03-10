@@ -25,7 +25,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        AppController.getAppController().loadApplicationData(this);
+        //AppController.getAppController().loadApplicationData(this);
         Intent intent;
 
         //keep previous user logged in as long as they didn't log out

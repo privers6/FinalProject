@@ -5,11 +5,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.ListView;
 
 import com.example.twig.controllers.AppController;
+import com.example.twig.controllers.SaleController;
 import com.example.twig.controllers.UserController;
 import com.example.twig.finalproject.R;
+import com.example.twig.dataObjects.Sale;
+
+import java.util.List;
 
 /**
  * The "home" of the app. Has buttons to navigate to all other activities.
@@ -18,6 +24,7 @@ import com.example.twig.finalproject.R;
  * Created by Andrew on 1/29/2015.
  */
 public class ApplicationActivity extends Activity {
+    private ListView sales;
 
     /**
      * Called on creation. Displays name of user who is logged in.
@@ -28,6 +35,14 @@ public class ApplicationActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_application);
+
+        sales = (ListView) findViewById(R.id.friendList);
+
+        SaleController saleController = SaleController.getSaleController();
+
+        ArrayAdapter<Sale> adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,
+                saleController.getDisplaySale());
+        sales.setAdapter(adapter);
 
         TextView loginText = (TextView)findViewById(R.id.loginText);
         loginText.setText("Logged in as " + UserController.getUserController().getCurrentUsername() + ".");

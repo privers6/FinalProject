@@ -28,6 +28,7 @@ public class FriendSearchActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friendsearch);
+        txt = (EditText)findViewById(R.id.txtInput);
     }
 
     /**
