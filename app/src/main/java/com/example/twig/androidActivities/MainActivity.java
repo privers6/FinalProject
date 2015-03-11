@@ -26,15 +26,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         AppController.getAppController().loadApplicationData(this);
-        Intent intent;
-
-        //keep previous user logged in as long as they didn't log out
-        //otherwise go to welcome screen
-        if (CurrentUser.getCurrentUser() != null) {
-            intent = new Intent(this, ApplicationActivity.class);
-        } else {
-            intent = new Intent(this, WelcomeActivity.class);
-        }
+        Intent intent = new Intent(this, WelcomeActivity.class);
 
         startActivity(intent);
     }

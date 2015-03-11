@@ -46,9 +46,7 @@ public class AppController {
     public void loadApplicationData(MainActivity activity) {
         //initialize the user list to write to / read from the correct file
         UserList.setSaveFilename(activity.getFilesDir().getPath() + "userlist.dat");
-        CurrentUser.setSaveFilename(activity.getFilesDir().getPath() + "currentuser.dat");
         UserList.loadUserList();
-        CurrentUser.loadCurrentUser();
     }
 
     /**
