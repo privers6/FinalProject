@@ -4,30 +4,21 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
-import com.example.twig.dataObjects.CurrentUser;
-import com.example.twig.dataObjects.Friend;
-import com.example.twig.dataObjects.UserList;
+import com.example.twig.controllers.FriendController;
 import com.example.twig.finalproject.R;
-import com.example.twig.dataObjects.User;
 
 /**
- * Activity that allows the user to log in.
+ * Activity in which user can add/remove friends. They type in the name of a user,
+ * and hit either the add or delete button.
  *
  * Created by Thad on 2/17/2015.
  */
 public class FriendSearchActivity extends Activity {
     private EditText txt;
-    private Button add;
-    private TextView status;
 
-    ListView friends;
     /**
      * Called upon activity creation.
      *
@@ -37,82 +28,55 @@ public class FriendSearchActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friendsearch);
-
-        txt = (EditText) findViewById(R.id.txtInput);
-        add = (Button) findViewById(R.id.btnAdd);
-        status = (TextView) findViewById(R.id.txtStatus);
+        txt = (EditText)findViewById(R.id.txtInput);
     }
 
+    /**
+     * Called when the back button is pressed. Sends user
+     * back to friends list activity.
+     *
+     * @param view the back button
+     */
     public void backPressed(View view) {
         Intent intent = new Intent(this, FriendListActivity.class);
         startActivity(intent);
     }
 
     /**
-     * Method called when add to friends button is pressed. Searches
-     * the userlist for a user with a matching name, and adds them to
-     * the current user's friendlist (duplicate adds is handled by
-     * the addFriend method, no need to check for that here). Also,
-     * doesn't allow a user to add their own username as a friend.
+     * Method called when add to friends button is pressed.
      *
      * @param view the add to friends button
-     * @return true if addition is made, false otherwise
+     *
      */
     public void addToFriendsPressed(View view) {
-        User currentUser = CurrentUser.getCurrentUser();
-        ArrayList<User> userlist = UserList.getUserList();
-        String queryString = txt.getText().toString();
+        String name = txt.getText().toString();
 
-        //no adding yourself as a friend!
-        if(queryString.equalsIgnoreCase(CurrentUser.getCurrentUser().getName())) {
-            status.setText("You cannot add yourself as a friend.");
-            status.setTextColor(0xFFFF0000);
-            status.setVisibility(View.VISIBLE);
-            return;
-        }
-
-        for(User u: userlist) {
-            if (queryString.equalsIgnoreCase(u.getName())) {
-                //matching user found!
-                boolean success = currentUser.addFriend(u);
-
-                if(success) {
-                    status.setText(u.getName() + " added as a friend.");
-                    status.setTextColor(0xFF00FF00);
-                    status.setVisibility(View.VISIBLE);
-                } else {
-                    status.setText("You are already friends with " + u.getName() + ".");
-                    status.setTextColor(0xFFFF0000);
-                    status.setVisibility(View.VISIBLE);
-                }
-                return;
-            }
-        }
-
-        status.setText("User not found.");
-        status.setTextColor(0xFFFF0000);
-        status.setVisibility(View.VISIBLE);
-        return;
+        FriendController friendController = FriendController.getFriendController();
+        friendController.addFriend(name, this);
     }
 
+    /**
+     * Method called when delete friend button is pressed.
+     *
+     * @param view the delete friend button.
+     */
     public void deleteFriendPressed(View view) {
-        User currentUser = CurrentUser.getCurrentUser();
-        ArrayList<User> userlist = UserList.getUserList();
-        String queryString = txt.getText().toString();
+        String name = txt.getText().toString();
 
-        for(Friend f: currentUser.getFriendList()) {
-            if (queryString.equalsIgnoreCase(f.getUser().getName())) {
-                currentUser.removeFriend(f.getUser());
-                status.setText(f.getUser().getName() + " removed as a friend.");
-                status.setTextColor(0xFF00FF00);
-                status.setVisibility(View.VISIBLE);
-                return;
-            }
-        }
+        FriendController friendController = FriendController.getFriendController();
+        friendController.deleteFriend(name, this);
+    }
 
-
-        status.setText(queryString + " is not on your friend's list.");
-        status.setTextColor(0xFFFF0000);
-        status.setVisibility(View.VISIBLE);
+    /**
+     * Display message upon successful/failed friend addition.
+     *
+     * @param str the message to display
+     * @param color the color the message should display
+     */
+    public void displayMessage(String str, int color) {
+        TextView msg = (TextView)findViewById(R.id.txtStatus);
+        msg.setText(str);
+        msg.setTextColor(color);
+        msg.setVisibility(View.VISIBLE);
     }
 }

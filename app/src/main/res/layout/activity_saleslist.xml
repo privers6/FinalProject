@@ -7,13 +7,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Back"
-        android:id="@+id/btnBack"
+        android:id="@+id/back_button"
         android:onClick="backPressed"
         android:layout_gravity= "top"
         android:gravity="center_vertical|center_horizontal" />
 
     <ListView
-        android:id="@+id/interestList"
+        android:id="@+id/salesList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="100dp"
@@ -23,9 +23,9 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Interest"
-        android:id="@+id/btnAdd"
-        android:onClick="addInterestPressed"
+        android:text="Add Sales"
+        android:id="@+id/add_button"
+        android:onClick="addSalePressed"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -34,9 +34,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="You have X active interests"
-        android:id="@+id/txtNumInterests"
-        android:layout_below="@+id/btnBack"
+        android:text="You have X active sales"
+        android:id="@+id/num_sales"
+        android:layout_below="@+id/back_button"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"/>
 

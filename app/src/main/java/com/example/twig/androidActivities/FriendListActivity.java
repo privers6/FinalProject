@@ -5,22 +5,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
-import com.example.twig.finalproject.R;
-import com.example.twig.dataObjects.Friend;
+import com.example.twig.controllers.FriendController;
 import com.example.twig.dataObjects.User;
-import com.example.twig.dataObjects.CurrentUser;
-import android.content.Intent;
-import android.widget.AdapterView.OnItemClickListener;
+import com.example.twig.finalproject.R;
 
 /**
- * Activity that allows the user to log in.
+ * Activity that displays a list of all of the current user's friends.
+ * Each friend may be clicked on to launch a FriendDetailActivit
  *
  * Created by Andrew on 1/29/2015.
  */
@@ -28,8 +25,10 @@ public class FriendListActivity extends Activity implements OnItemClickListener 
     private TextView txt;
     private Button add;
     private ListView friends;
+
     /**
-     * Called upon activity creation.
+     * Called upon activity creation. Creates the list/adapter,
+     * and adds an onItemClickedListener() to register clicks.
      *
      * @param savedInstanceState
      */
@@ -38,18 +37,19 @@ public class FriendListActivity extends Activity implements OnItemClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friendlist);
 
-        ArrayList<Friend> friendList = CurrentUser.getCurrentUser().getFriendList();
         txt = (TextView) findViewById(R.id.txtNumFriends);
         add = (Button) findViewById(R.id.btnAdd);
         friends = (ListView) findViewById(R.id.friendList);
 
-        ArrayAdapter<User> adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,
-                friendList);
+        FriendController friendController = FriendController.getFriendController();
 
+        ArrayAdapter<User> adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,
+                friendController.getFriendList());
         friends.setAdapter(adapter);
         friends.setOnItemClickListener(this);
 
-        txt.setText("You have " + friendList.size() + " friends.");
+        txt.setText("You have " + friendController.friendListSize() + " friend"
+                + ((friendController.friendListSize() == 1) ? "." : "s."));
     }
 
     /**
@@ -74,6 +74,15 @@ public class FriendListActivity extends Activity implements OnItemClickListener 
         startActivity(intent);
     }
 
+    /**
+     * Called when a friend is clicked on. Brings user to that friend's
+     * FriendDetailActivity
+     *
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent(this, FriendDetailActivity.class);

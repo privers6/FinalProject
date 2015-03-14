@@ -4,22 +4,29 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.twig.dataObjects.CurrentUser;
-import com.example.twig.dataObjects.Friend;
-import com.example.twig.dataObjects.User;
-import com.example.twig.dataObjects.UserList;
+import com.example.twig.controllers.FriendController;
+import com.example.twig.controllers.UserController;
 import com.example.twig.finalproject.R;
 
 /**
+ * Activity that shows details of a Friend that the user
+ * has clicked on.
+ *
  * Created by Andrew on 2/26/2015.
  */
-public class FriendDetailActivity extends Activity {
+public class FriendDetailActivity extends Activity implements AdapterView.OnItemSelectedListener {
+    private final String[] POSSIBLE_RATINGS = {"-", "1", "2", "3", "4", "5"};
+    String userBeingDisplayed;
 
     /**
      * Called upon activity creation. Sets content view
-     * and reads in all persisent data.
+     * and reads in all persisent data, passing them to
+     * appropriate views.
      *
      * @param savedInstanceState
      */
@@ -30,25 +37,26 @@ public class FriendDetailActivity extends Activity {
 
         TextView name = (TextView)findViewById(R.id.txtName);
         TextView email = (TextView)findViewById(R.id.txtEmail);
-        TextView rating = (TextView)findViewById(R.id.txtRating);
         TextView salesReported = (TextView)findViewById(R.id.txtSalesReported);
+        Spinner rating = (Spinner)findViewById(R.id.ratingSpinner);
 
         Intent intent = getIntent(); //gets the intent that started this activity
-        String user = intent.getStringExtra("USER_CLICKED");
+        userBeingDisplayed = intent.getStringExtra("USER_CLICKED");
 
-        for(Friend f: CurrentUser.getCurrentUser().getFriendList()) {
-            if(f.getUser().getName().equalsIgnoreCase(user)) {
-                name.setText(f.getUser().getName());
+        FriendController friendController = FriendController.getFriendController();
+        UserController userController = UserController.getUserController();
 
-                email.setText(f.getUser().getEmail());
+        name.setText(userBeingDisplayed);
 
-                String ratingString = (f.getRating() == 0) ? "Not yet rated." : "" + f.getRating();
-                rating.setText("Rating: " + ratingString);
+        email.setText(userController.getEmail(userBeingDisplayed));
 
-                salesReported.setText("Sales Reported: " + f.getUser().getSalesReported());
-                break;
-            }
-        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                R.layout.rating_spinner_item, POSSIBLE_RATINGS);
+        rating.setAdapter(adapter);
+        rating.setOnItemSelectedListener(this);
+        rating.setSelection(friendController.getRating(userBeingDisplayed));
+
+        salesReported.setText("Sales Reported: " + userController.getSalesReported(userBeingDisplayed));
     }
 
     /**
@@ -59,5 +67,25 @@ public class FriendDetailActivity extends Activity {
     public void backPressed(View view) {
         Intent intent = new Intent(this, FriendListActivity.class);
         startActivity(intent);
+    }
+
+    /**
+     * Called when an item on the list is selected. Updates
+     * the friends rating.
+     */
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String str = ((TextView)view).getText().toString();
+        FriendController friendController = FriendController.getFriendController();
+
+        if(str.equals("-")) {   //no rating selected
+            friendController.setRating(userBeingDisplayed, 0);
+        } else {                //rating selected
+            friendController.setRating(userBeingDisplayed, new Integer(str));
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
     }
 }

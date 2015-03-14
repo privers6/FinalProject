@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:id="@+id/Main"
+    android:background="#838383">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="SALE"
+        android:id="@+id/SaleText"
+        android:layout_marginTop="67dp"
+        android:textSize="60dp"
+        android:textColor="#ff9fff80"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/sale_name_field"
+        android:width="250dp"
+        android:hint="Name"
+        android:layout_below="@+id/SaleText"
+        android:layout_alignLeft="@+id/sale_location_field"
+        android:layout_alignStart="@+id/sale_location_field"
+        android:layout_marginTop="60dp"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/sale_price_field"
+        android:width="250dp"
+        android:hint="Price"
+        android:clickable="true"
+        android:layout_below="@+id/sale_name_field"
+        android:layout_alignLeft="@+id/sale_location_field"
+        android:layout_alignStart="@+id/sale_location_field" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SUBMIT"
+        android:id="@+id/submitButton"
+        android:width="120dp"
+        android:clickable="true"
+        android:onClick="submitPressed"
+        android:layout_alignTop="@+id/backButton"
+        android:layout_alignRight="@+id/sale_price_field"
+        android:layout_alignEnd="@+id/sale_price_field" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BACK"
+        android:id="@+id/backButton"
+        android:width="120dp"
+        android:onClick="backPressed"
+        android:layout_below="@+id/message"
+        android:layout_alignLeft="@+id/sale_location_field"
+        android:layout_alignStart="@+id/sale_location_field" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:width="250dp"
+        android:id="@+id/sale_location_field"
+        android:layout_below="@+id/sale_price_field"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:hint="Location" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Filler Text"
+        android:id="@+id/message"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="20dp"
+        android:visibility="invisible"
+        android:layout_below="@+id/sale_location_field"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="20dp"
+        android:text="$"
+        android:layout_toLeftOf="@id/sale_price_field"
+        android:layout_alignTop="@id/sale_price_field"
+        />
+</RelativeLayout>

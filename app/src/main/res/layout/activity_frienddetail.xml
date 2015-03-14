@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="#5c5c5c">
+    android:background="#838383">
 
 
     <TextView
@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Rating"
+        android:text="Rating:    "
         android:id="@+id/txtRating"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/txtEmail"
@@ -57,5 +57,15 @@
         android:layout_below="@+id/txtSalesReported"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ratingSpinner"
+        android:layout_alignTop="@+id/txtRating"
+        android:layout_toRightOf="@+id/txtRating"
+        android:layout_toEndOf="@+id/txtRating"
+        android:layout_marginLeft="-20dp"
+        />
 
 </RelativeLayout>
