@@ -104,11 +104,12 @@ public class UserList implements Serializable {
         //to see if the list contains that user.
         User dummyUser = new User(username, null, null);
 
-        int index;
-        if((index = userlist.indexOf(dummyUser)) == -1) {
+        int index = userlist.indexOf(dummyUser);
+        if(index == -1) {
             return null;
         }
-
-        return userlist.get(index);
+        else {
+            return userlist.get(index);
+        }
     }
 }

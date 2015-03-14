@@ -9,7 +9,7 @@ import java.util.ArrayList;
  *
  * @author Andrew
  */
-public class User implements Serializable {
+public final class User implements Serializable {
     private String name;
     private String password;
     private ArrayList<Friend> friendList;
@@ -188,14 +188,14 @@ public class User implements Serializable {
      * Adds an interest to this user's interest list. If interest
      * of same name exists, updates the price.
      *
-     * @param name - Name of the interest.
+     * @param intName - Name of the interest.
      * @param price - Price of the interest.
      */
-    public void addInterest(String name, double price) {
+    public void addInterest(String intName, double price) {
         boolean itemAlreadyExists = false;
 
         for(Interest i: interestList) {
-            if(i.getName().equalsIgnoreCase(name)) {
+            if(i.getName().equalsIgnoreCase(intName)) {
                 i.setPrice(price);
                 itemAlreadyExists = true;
                 break;
@@ -203,7 +203,7 @@ public class User implements Serializable {
         }
 
         if(!itemAlreadyExists) {
-            Interest interest = new Interest(name, price);
+            Interest interest = new Interest(intName, price);
             interestList.add(interest);
         }
 
@@ -213,12 +213,12 @@ public class User implements Serializable {
     /**
      * Adds an sale to this user's sale list.
      *
-     * @param name - Name of the sale.
+     * @param saleName - Name of the sale.
      * @param price - Price of the sale.
      * @param location - Location of the sale
      */
-    public void addSale(String name, double price, String location) {
-        Sale s = new Sale(name, price, location);
+    public void addSale(String saleName, double price, String location) {
+        Sale s = new Sale(saleName, price, location);
         saleList.add(s);
 
         UserList.saveUserList();
@@ -233,8 +233,7 @@ public class User implements Serializable {
      */
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof User))
-            return false;
+        if (!(obj instanceof User)){ return false; }
 
         return name.equalsIgnoreCase(((User) obj).getName());
     }

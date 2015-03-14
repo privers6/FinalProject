@@ -10,7 +10,7 @@ import com.example.twig.dataObjects.Sale;
 import com.example.twig.dataObjects.User;
 
 import java.util.ArrayList;
-
+import java.util.List;
 
 
 /**
@@ -19,7 +19,7 @@ import java.util.ArrayList;
  *
  * Created by Andrew on 3/5/2015.
  */
-public class SaleController {
+public final class SaleController {
     private static SaleController singleton;
 
     /**
@@ -34,7 +34,7 @@ public class SaleController {
      *
      * @return current user's sale list.
      */
-    public ArrayList<Sale> getSaleList() {
+    public List<Sale> getSaleList() {
         return CurrentUser.getCurrentUser().getSaleList();
     }
 
@@ -88,7 +88,7 @@ public class SaleController {
      *
      * @return displayed sales
      */
-    public ArrayList<Sale> getDisplaySale() {
+    public List<Sale> getDisplaySale() {
         ArrayList<Sale> sales = new ArrayList<Sale>();
 
         //add all sales from all friends

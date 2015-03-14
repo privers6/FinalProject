@@ -15,16 +15,13 @@ import com.example.twig.controllers.UserController;
 import com.example.twig.finalproject.R;
 import com.example.twig.dataObjects.Sale;
 
-import java.util.List;
-
 /**
  * The "home" of the app. Has buttons to navigate to all other activities.
  * Also displays the list of sales that match your interests.
  *
  * Created by Andrew on 1/29/2015.
  */
-public class ApplicationActivity extends Activity {
-    private ListView sales;
+public final class ApplicationActivity extends Activity {
 
     /**
      * Called on creation. Displays name of user who is logged in.
@@ -36,7 +33,7 @@ public class ApplicationActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_application);
 
-        sales = (ListView) findViewById(R.id.listView);
+        ListView sales = (ListView) findViewById(R.id.listView);
 
         SaleController saleController = SaleController.getSaleController();
 

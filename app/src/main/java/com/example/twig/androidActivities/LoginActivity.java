@@ -16,7 +16,7 @@ import com.example.twig.finalproject.R;
  *
  * Created by Andrew on 1/29/2015.
  */
-public class LoginActivity extends Activity {
+public final class LoginActivity extends Activity {
     /**
      * Called upon activity creation. If the activity is created from a
      * successful registration, then gives the user an acknowledgement of

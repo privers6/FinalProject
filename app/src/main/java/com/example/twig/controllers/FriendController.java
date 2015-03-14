@@ -9,6 +9,7 @@ import com.example.twig.dataObjects.User;
 import com.example.twig.dataObjects.UserList;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Controller for Friend data objects. Views can create and add friends by interfacing
@@ -16,7 +17,7 @@ import java.util.ArrayList;
  *
  * Created by Andrew on 3/5/2015.
  */
-public class FriendController {
+public final class FriendController {
     private static FriendController singleton;
 
     /**
@@ -85,7 +86,7 @@ public class FriendController {
      *
      * @return current user's friend list.
      */
-    public ArrayList<Friend> getFriendList() {
+    public List<Friend> getFriendList() {
         return CurrentUser.getCurrentUser().getFriendList();
     }
 
@@ -126,9 +127,9 @@ public class FriendController {
      * @return the rating
      */
     public int getRating(String name) {
-        Friend f;
+        Friend f = getFriend(name);
 
-        if((f = getFriend(name)) == null) {
+        if(f == null) {
             return 0;
         }
 
@@ -143,9 +144,9 @@ public class FriendController {
      * @param rating the rating being given
      */
     public void setRating(String name, int rating) {
-        Friend f;
+        Friend f = getFriend(name);
 
-        if((f = getFriend(name)) == null) {
+        if(f == null) {
             return;
         }
 
@@ -160,9 +161,9 @@ public class FriendController {
      * @return the num of sales reported by this user to the current user
      */
     public int getSalesReported(String name) {
-        Friend f;
+        Friend f = getFriend(name);
 
-        if((f = getFriend(name)) == null) {
+        if(f== null) {
             return 0;
         }
 

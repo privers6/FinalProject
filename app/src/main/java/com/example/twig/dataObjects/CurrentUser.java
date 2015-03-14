@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * Created by Andrew on 2/18/2015.
  */
-public class CurrentUser implements Serializable {
+public final class CurrentUser implements Serializable {
     private static User current;
     private static String filename;
 

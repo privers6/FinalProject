@@ -7,7 +7,7 @@ import com.example.twig.dataObjects.CurrentUser;
 import com.example.twig.dataObjects.Interest;
 
 import java.util.ArrayList;
-
+import java.util.List;
 
 
 /**
@@ -16,7 +16,7 @@ import java.util.ArrayList;
  *
  * Created by Andrew on 3/5/2015.
  */
-public class InterestController {
+public final class InterestController {
     private static InterestController singleton;
 
     /**
@@ -31,7 +31,7 @@ public class InterestController {
      *
      * @return current user's interest list.
      */
-    public ArrayList<Interest> getInterestList() {
+    public List<Interest> getInterestList() {
         return CurrentUser.getCurrentUser().getInterestList();
     }
 

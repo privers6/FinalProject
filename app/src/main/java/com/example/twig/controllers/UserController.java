@@ -15,7 +15,7 @@ import java.util.ArrayList;
  *
  * Created by Andrew on 3/5/2015.
  */
-public class UserController {
+public final class UserController {
     private static UserController singleton;
 
     /**
@@ -84,8 +84,8 @@ public class UserController {
      * @return the user's email
      */
     public String getEmail(String user) {
-        User u;
-        if((u = UserList.getUserByName(user)) == null) {
+        User u = UserList.getUserByName(user);
+        if(u== null) {
             return null;
         }
 
@@ -99,8 +99,8 @@ public class UserController {
      * @return the # of sales reported by the user
      */
     public int getSalesReported(String user) {
-        User u;
-        if((u = UserList.getUserByName(user)) == null) {
+        User u = UserList.getUserByName(user);
+        if(u== null) {
             return 0;
         }
 

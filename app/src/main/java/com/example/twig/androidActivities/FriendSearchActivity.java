@@ -16,7 +16,7 @@ import com.example.twig.finalproject.R;
  *
  * Created by Thad on 2/17/2015.
  */
-public class FriendSearchActivity extends Activity {
+public final class FriendSearchActivity extends Activity {
     private EditText txt;
 
     /**

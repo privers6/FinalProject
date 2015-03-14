@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -18,10 +17,7 @@ import com.example.twig.finalproject.R;
  *
  * Created by Porter Rivers on 2/26/2015.
  */
-public class InterestListActivity extends Activity{
-    private TextView txt;
-    private Button add;
-    private ListView interests;
+public final class InterestListActivity extends Activity{
 
     /**
      * Called upon activity creation. Sets up list/adapter, and
@@ -34,9 +30,8 @@ public class InterestListActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interestlist);
 
-        txt = (TextView) findViewById(R.id.txtNumInterests);
-        add = (Button) findViewById(R.id.btnAdd);
-        interests = (ListView) findViewById(R.id.interestList);
+        TextView txt = (TextView) findViewById(R.id.txtNumInterests);
+        ListView interests = (ListView) findViewById(R.id.interestList);
 
         InterestController interestController = InterestController.getInterestController();
 

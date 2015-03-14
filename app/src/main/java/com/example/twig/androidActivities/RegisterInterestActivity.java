@@ -15,7 +15,7 @@ import com.example.twig.finalproject.R;
  *
  * Created by Porter Rivers on 2/26/2015.
  */
-public class RegisterInterestActivity extends Activity{
+public final class RegisterInterestActivity extends Activity{
     /**
      * Called upon activity creation.
      *

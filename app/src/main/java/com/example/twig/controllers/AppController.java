@@ -15,7 +15,7 @@ import com.example.twig.dataObjects.UserList;
  *
  * Created by Andrew on 3/5/2015.
  */
-public class AppController {
+public final class AppController {
     private static AppController singleton;
 
     /**
@@ -70,11 +70,9 @@ public class AppController {
      */
     public boolean login(String username, String password, LoginActivity activity) {
         for(User u: UserList.getUserList()) {
-            if(username.equalsIgnoreCase(u.getName())) {
-                if(password.equals(u.getPassword())) {
-                    CurrentUser.setCurrentUser(u);
-                    return true;
-                }
+            if(username.equalsIgnoreCase(u.getName()) && password.equals(u.getPassword())) {
+                CurrentUser.setCurrentUser(u);
+                return true;
             }
         }
 

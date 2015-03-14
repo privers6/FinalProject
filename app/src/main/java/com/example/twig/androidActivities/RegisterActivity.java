@@ -16,7 +16,7 @@ import com.example.twig.finalproject.R;
  *
  * @author Andrew
  */
-public class RegisterActivity extends Activity {
+public final class RegisterActivity extends Activity {
     /**
      * Called upon activity creation.
      *

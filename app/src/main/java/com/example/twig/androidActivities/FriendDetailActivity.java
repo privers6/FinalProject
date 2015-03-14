@@ -19,9 +19,9 @@ import com.example.twig.finalproject.R;
  *
  * Created by Andrew on 2/26/2015.
  */
-public class FriendDetailActivity extends Activity implements AdapterView.OnItemSelectedListener {
+public final class FriendDetailActivity extends Activity implements AdapterView.OnItemSelectedListener {
     private final String[] POSSIBLE_RATINGS = {"-", "1", "2", "3", "4", "5"};
-    String userBeingDisplayed;
+    private String userBeingDisplayed;
 
     /**
      * Called upon activity creation. Sets content view
@@ -81,7 +81,7 @@ public class FriendDetailActivity extends Activity implements AdapterView.OnItem
         if(str.equals("-")) {   //no rating selected
             friendController.setRating(userBeingDisplayed, 0);
         } else {                //rating selected
-            friendController.setRating(userBeingDisplayed, new Integer(str));
+            friendController.setRating(userBeingDisplayed, Integer.valueOf(str));
         }
     }
 

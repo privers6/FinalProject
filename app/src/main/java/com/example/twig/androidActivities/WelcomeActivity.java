@@ -12,7 +12,7 @@ import com.example.twig.finalproject.R;
  *
  * @author Andrew
  */
-public class WelcomeActivity extends Activity {
+public final class WelcomeActivity extends Activity {
 
     /**
      * Called upon activity creation.

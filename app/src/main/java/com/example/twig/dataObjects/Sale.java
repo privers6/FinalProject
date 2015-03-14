@@ -9,7 +9,7 @@ import java.text.DecimalFormat;
  *
  * Created by Piyakorn on 3/5/2015.
  */
-public class Sale implements Serializable {
+public final class Sale implements Serializable {
     private String name;
     private double price;
     private String location;

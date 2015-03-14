@@ -16,7 +16,7 @@ import com.example.twig.finalproject.R;
  *
  * Created by Piyakorn on 3/3/2015.
  */
-public class SalesReportActivity extends Activity{
+public final class SalesReportActivity extends Activity{
     /**
      * Called upon activity creation.
      *
