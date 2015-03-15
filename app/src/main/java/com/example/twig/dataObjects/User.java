@@ -2,6 +2,7 @@ package com.example.twig.dataObjects;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class containing the information for a user. Nearly all of the data contained
@@ -12,9 +13,9 @@ import java.util.ArrayList;
 public final class User implements Serializable {
     private String name;
     private String password;
-    private ArrayList<Friend> friendList;
-    private ArrayList<Interest> interestList;
-    private ArrayList<Sale> saleList;
+    private List<Friend> friendList;
+    private List<Interest> interestList;
+    private List<Sale> saleList;
     private String email;
     private int salesReported;
 
@@ -99,7 +100,7 @@ public final class User implements Serializable {
      *
      * @return the friends list.
      */
-    public ArrayList<Friend>getFriendList() {
+    public List<Friend>getFriendList() {
         return friendList;
     }
 
@@ -108,7 +109,7 @@ public final class User implements Serializable {
      *
      * @return the interests list.
      */
-    public ArrayList<Interest>getInterestList() {
+    public List<Interest>getInterestList() {
         return interestList;
     }
     /**
@@ -116,7 +117,7 @@ public final class User implements Serializable {
      *
      * @return the sale list.
      */
-    public ArrayList<Sale> getSaleList() {
+    public List<Sale> getSaleList() {
         return saleList;
     }
 

@@ -20,7 +20,7 @@ import com.example.twig.finalproject.R;
  * Created by Andrew on 2/26/2015.
  */
 public final class FriendDetailActivity extends Activity implements AdapterView.OnItemSelectedListener {
-    private final String[] POSSIBLE_RATINGS = {"-", "1", "2", "3", "4", "5"};
+    private static final String[] POSSIBLE_RATINGS = {"-", "1", "2", "3", "4", "5"};
     private String userBeingDisplayed;
 
     /**

@@ -6,6 +6,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The list of registered users. Extends an arraylist of type user. ALL PERSISTENT
@@ -16,7 +17,7 @@ import java.util.ArrayList;
  * Created by Andrew on 2/18/2015.
  */
 public class UserList implements Serializable {
-    private static ArrayList<User> userlist = new ArrayList<User>();
+    private static List<User> userlist = new ArrayList<User>();
     private static String filename;
 
     /**
@@ -88,7 +89,7 @@ public class UserList implements Serializable {
      * Get the user list.
      * @return
      */
-    public static ArrayList<User> getUserList() {
+    public static List<User> getUserList() {
         return userlist;
     }
 
