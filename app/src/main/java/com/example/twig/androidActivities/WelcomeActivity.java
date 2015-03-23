@@ -31,7 +31,8 @@ public class WelcomeActivity extends Activity {
      * @param view - the login button
      */
     public void loginPressed(View view) {
-        Intent intent = new Intent(this, LoginActivity.class);
+        //Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent = new Intent(this, MapActivity.class);
         startActivity(intent);
     }
 
