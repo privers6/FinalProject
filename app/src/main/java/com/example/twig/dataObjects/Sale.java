@@ -1,5 +1,7 @@
 package com.example.twig.dataObjects;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.io.Serializable;
 import java.text.DecimalFormat;
 
@@ -12,7 +14,12 @@ import java.text.DecimalFormat;
 public class Sale implements Serializable {
     private String name;
     private double price;
-    private String location;
+
+    //store as 2 doubles instead of as a LatLng since LatLng isn't serializable
+    //however, getters and setters use LatLng, so from the client's perspective,
+    //locations are stored as LatLng's
+    private double latitude;
+    private double longitude;
 
     /**
      * Constructor for a Sale object.
@@ -20,10 +27,11 @@ public class Sale implements Serializable {
      * @param n - the item name
      * @param p - price of sale item
      */
-    public Sale(String n, double p, String l) {
+    public Sale(String n, double p, double lat, double lon) {
         name = n;
         price = p;
-        location = l;
+        latitude = lat;
+        longitude = lon;
     }
     /**
      * Getter for name.
@@ -57,15 +65,16 @@ public class Sale implements Serializable {
      * Getter for location.
      * @return the location
      */
-    public String getLocation() {
-        return location;
+    public LatLng getLocation() {
+        return new LatLng(latitude, longitude);
     }
     /**
      * Setter for sale item location
      * @param l  - new location
      */
-    public void setLocation(String l) {
-        location = l;
+    public void setLocation(LatLng l) {
+        latitude = l.latitude;
+        longitude = l.longitude;
     }
 
     /**
@@ -73,7 +82,7 @@ public class Sale implements Serializable {
      * @return
      */
     public String toString() {
-        return (name + ": $" + new DecimalFormat("0.00").format(price) + " at " + location);
+        return (name + ": $" + new DecimalFormat("0.00").format(price));
     }
 
 }

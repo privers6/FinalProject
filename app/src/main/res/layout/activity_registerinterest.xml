@@ -22,7 +22,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="REGISTER"
+        android:text="ADD"
         android:id="@+id/registerButton"
         android:width="120dp"
         android:clickable="true"

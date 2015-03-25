@@ -98,8 +98,13 @@
             android:value="AIzaSyBH9EO00wJ7OtnzKMFxFwEXPA-mUYA-e5w" />
 
         <activity
-            android:name="com.example.twig.androidActivities.MapActivity"
-            android:label="Map Activity" >
+            android:name="com.example.twig.androidActivities.MapPlaceActivity"
+            android:label="Map Place Activity" >
+        </activity>
+
+        <activity
+            android:name="com.example.twig.androidActivities.MapViewActivity"
+            android:label="Map View Activity" >
         </activity>
 
     </application>

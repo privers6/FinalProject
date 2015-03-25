@@ -28,8 +28,7 @@
         android:width="250dp"
         android:hint="Name"
         android:layout_below="@+id/SaleText"
-        android:layout_alignLeft="@+id/sale_location_field"
-        android:layout_alignStart="@+id/sale_location_field"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"/>
 
     <EditText
@@ -42,8 +41,7 @@
         android:hint="Price"
         android:clickable="true"
         android:layout_below="@+id/sale_name_field"
-        android:layout_alignLeft="@+id/sale_location_field"
-        android:layout_alignStart="@+id/sale_location_field" />
+        android:layout_centerHorizontal="true"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -65,20 +63,33 @@
         android:width="120dp"
         android:onClick="backPressed"
         android:layout_below="@+id/message"
-        android:layout_alignLeft="@+id/sale_location_field"
-        android:layout_alignStart="@+id/sale_location_field" />
+        android:layout_alignLeft="@+id/sale_location_button"
+        android:layout_alignStart="@+id/sale_location_button" />
 
-    <EditText
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
         android:ems="10"
-        android:width="250dp"
-        android:id="@+id/sale_location_field"
+        android:width="180dp"
+        android:id="@+id/sale_location_button"
         android:layout_below="@+id/sale_price_field"
-        android:layout_centerHorizontal="true"
+        android:layout_alignLeft="@+id/sale_price_field"
         android:layout_marginTop="10dp"
-        android:hint="Location" />
+        android:text="Set Location"
+        android:onClick="setLocationPressed"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text=""
+        android:textSize="30dp"
+        android:textColor="#FF0000"
+        android:id="@+id/isLocationSet"
+        android:layout_toRightOf="@id/sale_location_button"
+        android:layout_marginLeft="10dp"
+        android:layout_alignBaseline="@id/sale_location_button"
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -89,7 +100,7 @@
         android:layout_marginTop="35dp"
         android:layout_marginBottom="20dp"
         android:visibility="invisible"
-        android:layout_below="@+id/sale_location_field"
+        android:layout_below="@+id/sale_location_button"
         android:layout_centerHorizontal="true" />
 
     <TextView

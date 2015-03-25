@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="#838383">
+
+    <fragment
+        android:id="@+id/mapView"
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout="@layout/activity_mapplace" />
+
+    <Button
+        android:layout_height="wrap_content"
+        android:text="CONFIRM"
+        android:id="@+id/btnConfirm"
+        android:layout_width="180dp"
+        android:clickable="true"
+        android:onClick="confirmPressed"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
+
+    <Button
+        android:layout_height="wrap_content"
+        android:text="CANCEL"
+        android:id="@+id/btnCancel"
+        android:layout_width="180dp"
+        android:clickable="true"
+        android:onClick="cancelPressed"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"/>
+
+</RelativeLayout>

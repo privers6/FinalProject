@@ -9,6 +9,15 @@
         android:name="com.google.android.gms.maps.MapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout="@layout/activity_map" />
+        tools:layout="@layout/activity_mapplace" />
+
+    <Button
+        android:layout_height="wrap_content"
+        android:text="RETURN"
+        android:id="@+id/btnReturn"
+        android:layout_width="match_parent"
+        android:clickable="true"
+        android:onClick="returnPressed"
+        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>

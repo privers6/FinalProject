@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.ListView;
@@ -15,6 +16,7 @@ import com.example.twig.controllers.UserController;
 import com.example.twig.finalproject.R;
 import com.example.twig.dataObjects.Sale;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,11 +25,13 @@ import java.util.List;
  *
  * Created by Andrew on 1/29/2015.
  */
-public class ApplicationActivity extends Activity {
+public class ApplicationActivity extends Activity implements AdapterView.OnItemClickListener {
     private ListView sales;
+    private ArrayList<Sale> saleList;
 
     /**
-     * Called on creation. Displays name of user who is logged in.
+     * Called on creation. Displays name of user who is logged in, as well
+     * as any sales reported by their friends that match one of their interests.
      *
      * @param savedInstanceState
      */
@@ -40,9 +44,11 @@ public class ApplicationActivity extends Activity {
 
         SaleController saleController = SaleController.getSaleController();
 
+        saleList = saleController.getDisplaySale();
         ArrayAdapter<Sale> adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,
-                saleController.getDisplaySale());
+                saleList);
         sales.setAdapter(adapter);
+        sales.setOnItemClickListener(this);
 
         TextView loginText = (TextView)findViewById(R.id.loginText);
         loginText.setText("Logged in as " + UserController.getUserController().getCurrentUsername() + ".");
@@ -106,6 +112,25 @@ public class ApplicationActivity extends Activity {
      */
     public void mySalesPressed(View view) {
         Intent intent = new Intent(this, SalesListActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * When sale is clicked, launch MapViewActivity to show location of the sale.
+     *
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     */
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent(this, MapViewActivity.class);
+        Sale saleClicked = saleList.get(position);
+
+        intent.putExtra("LATITUDE", "" + saleClicked.getLocation().latitude);
+        intent.putExtra("LONGITUDE", "" + saleClicked.getLocation().longitude);
+
         startActivity(intent);
     }
 }

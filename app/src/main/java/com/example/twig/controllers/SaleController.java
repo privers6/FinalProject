@@ -8,6 +8,7 @@ import com.example.twig.dataObjects.Friend;
 import com.example.twig.dataObjects.Interest;
 import com.example.twig.dataObjects.Sale;
 import com.example.twig.dataObjects.User;
+import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 
@@ -54,12 +55,27 @@ public class SaleController {
      *
      * @param name item name
      * @param price item price
-     * @param location item location
+     * @param latitude item location latitude
+     * @param longitude item location longitude
      * @return whether the report was successful
      */
-    public boolean reportSale(String name, String price, String location, SalesReportActivity activity) {
-        if(name.isEmpty() || price.isEmpty() || location.isEmpty()) {
+    public boolean reportSale(String name, String price, String latitude, String longitude, SalesReportActivity activity) {
+        if(name.isEmpty() || price.isEmpty()) {
             activity.displayMessage("One or more fields are empty", Color.RED);
+            return false;
+        }
+
+        if(latitude == null || longitude == null) {
+            activity.displayMessage("Must set location first!", Color.RED);
+            activity.locationNotYetSetHint();
+            return false;
+        }
+
+        LatLng location;
+        try {
+            location = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
+        } catch (Exception e) {
+            activity.displayMessage("Failed parsing location.", Color.RED);
             return false;
         }
 

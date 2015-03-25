@@ -13,6 +13,17 @@
         android:layout_below="@+id/btnLogout"
         android:layout_centerHorizontal="true" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Click on sale to see location."
+        android:id="@+id/pressForLocationText"
+        android:textSize="20dp"
+        android:layout_below="@+id/loginText"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true" />
+
     <Button
         android:layout_width="180dp"
         android:layout_height="wrap_content"
@@ -29,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:width="180dp"
-        android:text="FriendsList"
+        android:text="Friends List"
         android:id="@+id/btnFriends"
         android:onClick="friendsPressed"
         android:layout_alignParentTop="true"
@@ -64,6 +75,6 @@
         android:id="@+id/listView"
         android:layout_centerHorizontal="true"
         android:layout_above="@+id/btnInterests"
-        android:layout_below="@+id/loginText" />
+        android:layout_below="@+id/pressForLocationText" />
 
 </RelativeLayout>

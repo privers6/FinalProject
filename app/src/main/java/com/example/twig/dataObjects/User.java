@@ -1,5 +1,7 @@
 package com.example.twig.dataObjects;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -217,8 +219,8 @@ public class User implements Serializable {
      * @param price - Price of the sale.
      * @param location - Location of the sale
      */
-    public void addSale(String name, double price, String location) {
-        Sale s = new Sale(name, price, location);
+    public void addSale(String name, double price, LatLng location) {
+        Sale s = new Sale(name, price, location.latitude, location.longitude);
         saleList.add(s);
 
         UserList.saveUserList();
