@@ -28,12 +28,12 @@ public class UserController {
      * Called whenever a new user is to be registered. Data is not
      * trustworthy, so everything is validated/checked here.
      *
-     * @param username
-     * @param password
-     * @param confirmPassword
-     * @param email
-     * @param activity
-     * @return whether the registration was succesful
+     * @param username the string entered in the username field
+     * @param password the string entered in the password field
+     * @param confirmPassword the string entered in the confirm password field
+     * @param email the string entered in the email field
+     * @param activity the login activity that called this
+     * @return whether the registration was successful
      */
     public boolean registerUser(String username, String password, String confirmPassword,
                              String email, RegisterActivity activity) {

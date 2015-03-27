@@ -112,9 +112,13 @@ public class SaleController {
             sales.addAll(f.getUser().getSaleList());
         }
 
-        //remove ones that don't match interest
-        for(Sale s: sales) {
+        //DON'T USE AN ITERATOR HERE (i.e., don't use a for-each loop)!!!
+        //this causes ConcurrentModificationException since the list is
+        //being modified (items removed) while it is being iterated over.
+        //old-fashioned for-loop should do the trick
+        for(int index = 0; index < sales.size(); index++) {
             boolean matchFound = false;
+            Sale s = sales.get(index);
 
             for(Interest i: CurrentUser.getCurrentUser().getInterestList()) {
                 if(s.getName().equalsIgnoreCase(i.getName()) && s.getPrice() <= i.getPrice()) {
@@ -125,6 +129,7 @@ public class SaleController {
 
             if(!matchFound) {
                 sales.remove(s);
+                index--; //decrement index since all items past removal shift down by one
             }
         }
         return sales;
